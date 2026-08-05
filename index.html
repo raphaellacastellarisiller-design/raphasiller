@@ -135,6 +135,16 @@
     </div>
   </div>
 
+  <!-- LIGHTBOX: foto ampliada -->
+  <div class="lightbox" id="lightbox" hidden>
+    <div class="lightbox-backdrop" data-lightbox-close></div>
+    <button type="button" class="lightbox-close" data-lightbox-close aria-label="Fechar">&times;</button>
+    <button type="button" class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Foto anterior">&#8249;</button>
+    <img class="lightbox-img" id="lightbox-img" src="" alt="">
+    <button type="button" class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Próxima foto">&#8250;</button>
+    <p class="lightbox-counter" id="lightbox-counter"></p>
+  </div>
+
   <!-- PORTFÓLIO -->
   <section class="portfolio" id="portfolio">
     <div class="container">
@@ -142,9 +152,9 @@
       <h2 class="center light">Um pouco do <em>trabalho</em></h2>
 
       <div class="portfolio-grid">
-        <div class="polaroid polaroid-sm reveal"><div class="polaroid-photo"><img src="assets/images/registros/aniversario-01.jpg" alt="Registro espontâneo de aniversário infantil" loading="lazy"></div></div>
-        <div class="polaroid polaroid-sm reveal"><div class="polaroid-photo"><img src="assets/images/registros/casamento-01.jpg" alt="Registro em tempo real de casamento" loading="lazy"></div></div>
-        <div class="polaroid polaroid-sm reveal"><div class="polaroid-photo"><img src="assets/images/registros/casamento-04.jpg" alt="Registro em tempo real de casamento" loading="lazy"></div></div>
+        <div class="polaroid polaroid-sm reveal lightbox-trigger" role="button" tabindex="0" data-lightbox-group="portfolio" data-lightbox-index="0"><div class="polaroid-photo"><img src="assets/images/registros/aniversario-01.jpg" alt="Registro espontâneo de aniversário infantil" loading="lazy"></div></div>
+        <div class="polaroid polaroid-sm reveal lightbox-trigger" role="button" tabindex="0" data-lightbox-group="portfolio" data-lightbox-index="1"><div class="polaroid-photo"><img src="assets/images/registros/casamento-01.jpg" alt="Registro em tempo real de casamento" loading="lazy"></div></div>
+        <div class="polaroid polaroid-sm reveal lightbox-trigger" role="button" tabindex="0" data-lightbox-group="portfolio" data-lightbox-index="2"><div class="polaroid-photo"><img src="assets/images/registros/casamento-04.jpg" alt="Registro em tempo real de casamento" loading="lazy"></div></div>
       </div>
     </div>
   </section>

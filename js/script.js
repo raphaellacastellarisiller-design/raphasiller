@@ -107,6 +107,19 @@ function buildGallery(service) {
       img.alt = `${service.title} — ${service.labelPrefix} ${String(i).padStart(2, '0')}`;
       img.loading = 'lazy';
       tile.appendChild(img);
+
+      tile.classList.add('media-tile-clickable');
+      tile.setAttribute('role', 'button');
+      tile.setAttribute('tabindex', '0');
+      const photoIndex = i - 1;
+      const openThisPhoto = () => openLightbox(service.images, photoIndex, tile);
+      tile.addEventListener('click', openThisPhoto);
+      tile.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openThisPhoto();
+        }
+      });
     } else {
       tile.classList.add(`ph-${((i - 1) % 6) + 1}`);
     }
@@ -162,6 +175,90 @@ modal.querySelectorAll('[data-close]').forEach((el) => {
   el.addEventListener('click', closeModal);
 });
 
+// Lightbox: ampliar fotos (portfólio + galeria do modal)
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+const lightboxCounter = document.getElementById('lightbox-counter');
+const lightboxPrev = document.getElementById('lightbox-prev');
+const lightboxNext = document.getElementById('lightbox-next');
+
+let lightboxGroup = [];
+let lightboxIndex = 0;
+let lastLightboxTrigger = null;
+
+function normalizeLightboxItem(item) {
+  return typeof item === 'string' ? { src: item, alt: '' } : item;
+}
+
+function showLightboxImage() {
+  const item = normalizeLightboxItem(lightboxGroup[lightboxIndex]);
+  lightboxImg.src = item.src;
+  lightboxImg.alt = item.alt;
+
+  const multiple = lightboxGroup.length > 1;
+  lightboxPrev.hidden = !multiple;
+  lightboxNext.hidden = !multiple;
+  lightboxCounter.textContent = multiple ? `${lightboxIndex + 1} / ${lightboxGroup.length}` : '';
+}
+
+function openLightbox(group, index, triggerEl) {
+  lightboxGroup = group;
+  lightboxIndex = index;
+  lastLightboxTrigger = triggerEl;
+
+  showLightboxImage();
+  lightbox.hidden = false;
+  document.body.style.overflow = 'hidden';
+  lightbox.querySelector('.lightbox-close').focus();
+}
+
+function closeLightbox() {
+  lightbox.hidden = true;
+  lightboxImg.src = '';
+  document.body.style.overflow = modal.hidden ? '' : 'hidden';
+  if (lastLightboxTrigger) lastLightboxTrigger.focus();
+}
+
+function lightboxStep(delta) {
+  lightboxIndex = (lightboxIndex + delta + lightboxGroup.length) % lightboxGroup.length;
+  showLightboxImage();
+}
+
+lightbox.querySelectorAll('[data-lightbox-close]').forEach((el) => {
+  el.addEventListener('click', closeLightbox);
+});
+lightboxPrev.addEventListener('click', () => lightboxStep(-1));
+lightboxNext.addEventListener('click', () => lightboxStep(1));
+
+// Portfólio: fotos clicáveis
+const portfolioTriggers = document.querySelectorAll('.lightbox-trigger[data-lightbox-group="portfolio"]');
+const portfolioPhotos = Array.from(portfolioTriggers).map((el) => {
+  const img = el.querySelector('img');
+  return { src: img.src, alt: img.alt };
+});
+
+portfolioTriggers.forEach((el, index) => {
+  const open = () => openLightbox(portfolioPhotos, index, el);
+  el.addEventListener('click', open);
+  el.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      open();
+    }
+  });
+});
+
 document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && !modal.hidden) closeModal();
+  if (e.key === 'Escape') {
+    if (!lightbox.hidden) {
+      closeLightbox();
+    } else if (!modal.hidden) {
+      closeModal();
+    }
+    return;
+  }
+  if (!lightbox.hidden && lightboxGroup.length > 1) {
+    if (e.key === 'ArrowLeft') lightboxStep(-1);
+    if (e.key === 'ArrowRight') lightboxStep(1);
+  }
 });
