@@ -95,7 +95,6 @@ const modalTitle = document.getElementById('modal-title');
 const modalSub = document.getElementById('modal-sub');
 const modalDesc = document.getElementById('modal-desc');
 const modalGallery = document.getElementById('modal-gallery');
-const serviceCards = document.querySelectorAll('.service-card[data-service]');
 
 let lastTrigger = null;
 
@@ -167,15 +166,37 @@ function closeModal() {
   if (lastTrigger) lastTrigger.focus();
 }
 
-serviceCards.forEach((card) => {
-  card.addEventListener('click', () => openModal(card.dataset.service, card));
-  card.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      openModal(card.dataset.service, card);
-    }
+// Pastinha de serviços (abas)
+const folderTabs = document.querySelectorAll('.folder-tab[data-service]');
+const folderNum = document.getElementById('folder-num');
+const folderTitle = document.getElementById('folder-title');
+const folderSub = document.getElementById('folder-sub');
+const folderDesc = document.getElementById('folder-desc');
+const folderCta = document.getElementById('folder-cta');
+
+let activeServiceKey = 'social-media';
+
+function setActiveTab(serviceKey) {
+  const service = SERVICES[serviceKey];
+  if (!service) return;
+  activeServiceKey = serviceKey;
+
+  folderTabs.forEach((tab) => {
+    tab.setAttribute('aria-selected', tab.dataset.service === serviceKey ? 'true' : 'false');
   });
+
+  folderNum.textContent = service.num;
+  folderTitle.textContent = service.title;
+  folderSub.textContent = service.sub || '';
+  folderSub.hidden = !service.sub;
+  folderDesc.textContent = service.desc;
+}
+
+folderTabs.forEach((tab) => {
+  tab.addEventListener('click', () => setActiveTab(tab.dataset.service));
 });
+
+folderCta.addEventListener('click', () => openModal(activeServiceKey, folderCta));
 
 modal.querySelectorAll('[data-close]').forEach((el) => {
   el.addEventListener('click', closeModal);

@@ -99,42 +99,21 @@
       <p class="eyebrow center">O que eu faço</p>
       <h2 class="center">Serviços feitos sob <em>medida</em></h2>
 
-      <div class="service-grid">
-        <article class="service-card reveal" data-service="social-media" role="button" tabindex="0" aria-haspopup="dialog">
-          <span class="service-num">01</span>
-          <h3>Social Media</h3>
-          <p>Planejamento estratégico, captação e edição de conteúdo, gestão de redes e calendário editorial para o crescimento real da sua marca.</p>
-          <span class="service-hint">Ver exemplos ↗</span>
-        </article>
-
-        <article class="service-card reveal" data-service="storymaker" role="button" tabindex="0" aria-haspopup="dialog">
-          <span class="service-num">02</span>
-          <h3>Storymaker</h3>
-          <span class="service-sub">Cobertura de eventos</span>
-          <p>Eternizando os momentos mágicos do seu evento em tempo real, direto no story do Instagram.</p>
-          <span class="service-hint">Ver exemplos ↗</span>
-        </article>
-
-        <article class="service-card reveal" data-service="videomaker" role="button" tabindex="0" aria-haspopup="dialog">
-          <span class="service-num">03</span>
-          <h3>Videomaker</h3>
-          <p>Produção e edição de vídeos que comunicam com clareza, ritmo e encantam quem assiste.</p>
-          <span class="service-hint">Ver exemplos ↗</span>
-        </article>
-
-        <article class="service-card reveal" data-service="registros-organicos" role="button" tabindex="0" aria-haspopup="dialog">
-          <span class="service-num">04</span>
-          <h3>Registros Orgânicos</h3>
-          <p>Fotos autênticas feitas no celular, para o dia a dia da sua marca, eventos ou ensaios fotográficos — sempre com naturalidade e verdade.</p>
-          <span class="service-hint">Ver exemplos ↗</span>
-        </article>
-
-        <article class="service-card reveal" data-service="criacao-artes" role="button" tabindex="0" aria-haspopup="dialog">
-          <span class="service-num">05</span>
-          <h3>Criação de Artes</h3>
-          <p>Peças gráficas exclusivas para feed, stories e materiais de divulgação, com identidade visual única.</p>
-          <span class="service-hint">Ver exemplos ↗</span>
-        </article>
+      <div class="folder reveal">
+        <div class="folder-tabs" role="tablist" aria-label="Serviços">
+          <button type="button" class="folder-tab tab-pink" data-service="social-media" role="tab" aria-selected="true">Social Media</button>
+          <button type="button" class="folder-tab tab-wine" data-service="storymaker" role="tab" aria-selected="false">Storymaker</button>
+          <button type="button" class="folder-tab tab-cream" data-service="videomaker" role="tab" aria-selected="false">Videomaker</button>
+          <button type="button" class="folder-tab tab-black" data-service="registros-organicos" role="tab" aria-selected="false">Registros Orgânicos</button>
+          <button type="button" class="folder-tab tab-terracotta" data-service="criacao-artes" role="tab" aria-selected="false">Criação de Artes</button>
+        </div>
+        <div class="folder-panel" role="tabpanel">
+          <span class="service-num" id="folder-num">01</span>
+          <h3 id="folder-title">Social Media</h3>
+          <span class="service-sub" id="folder-sub" hidden></span>
+          <p id="folder-desc">Planejamento estratégico, captação e edição de conteúdo, gestão de redes e calendário editorial para o crescimento real da sua marca.</p>
+          <button type="button" class="btn btn-pill btn-light" id="folder-cta">Ver exemplos ↗</button>
+        </div>
       </div>
     </div>
   </section>
