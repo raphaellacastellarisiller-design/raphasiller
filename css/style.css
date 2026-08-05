@@ -2,8 +2,8 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  --wine: #6E1E2C;
-  --wine-dark: #4E1520;
+  --wine: #7A0F2C;
+  --wine-dark: #4A0A1E;
   --cream: #F7EEE3;
   --cream-alt: #F1E3D3;
   --pink: #E8B7C4;
@@ -39,16 +39,17 @@ img { max-width: 100%; display: block; }
 
 h1, h2, h3 {
   font-family: var(--font-display);
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1.15;
   letter-spacing: -0.01em;
+  color: var(--wine);
 }
 
 h1 { font-size: clamp(2.4rem, 5vw, 4rem); }
 h2 { font-size: clamp(1.9rem, 3.6vw, 2.8rem); }
-h3 { font-family: var(--font-display); font-size: 1.4rem; font-weight: 600; }
+h3 { font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; }
 
-em { font-style: italic; font-weight: 500; }
+em { font-style: italic; font-weight: 700; }
 
 p { color: var(--ink-soft); }
 
@@ -118,12 +119,12 @@ p { color: var(--ink-soft); }
 .logo {
   font-family: var(--font-display);
   font-size: 1.3rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--wine);
   text-decoration: none;
   white-space: nowrap;
 }
-.logo span { font-style: italic; font-weight: 400; }
+.logo span { font-style: italic; font-weight: 500; }
 
 .main-nav {
   display: flex;
@@ -134,7 +135,7 @@ p { color: var(--ink-soft); }
 
 .main-nav a {
   text-decoration: none;
-  color: var(--ink);
+  color: var(--wine);
   font-size: 0.92rem;
   letter-spacing: 0.02em;
   position: relative;
@@ -340,8 +341,9 @@ p { color: var(--ink-soft); }
 .testimonial-card p {
   font-family: var(--font-display);
   font-style: italic;
+  font-weight: 600;
   font-size: 1.15rem;
-  color: var(--ink);
+  color: var(--wine-dark);
   margin-bottom: 18px;
 }
 
