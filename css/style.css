@@ -300,6 +300,7 @@ p { color: var(--ink-soft); }
   font-weight: 700;
   font-size: 0.85rem;
   letter-spacing: 0.01em;
+  text-align: center;
   border: none;
   cursor: pointer;
   padding: 14px 22px;
@@ -307,6 +308,8 @@ p { color: var(--ink-soft); }
   opacity: 0.78;
   transform: translateY(4px);
   transition: opacity 0.2s ease, transform 0.2s ease;
+  flex: 1 1 0;
+  min-width: 130px;
 }
 .folder-tab:hover { opacity: 0.95; }
 .folder-tab[aria-selected="true"] {
@@ -323,7 +326,6 @@ p { color: var(--ink-soft); }
 .tab-wine { background: #C4223F; color: var(--cream); }
 .tab-gold { background: #F0C24E; color: var(--wine-dark); }
 .tab-orange { background: #E8783C; color: var(--wine-dark); }
-.tab-terracotta { background: #B8492E; color: var(--cream); }
 
 .folder-panel {
   background: var(--wine);

@@ -78,14 +78,6 @@ const SERVICES = {
     ],
     labelPrefix: 'Registro',
   },
-  'criacao-artes': {
-    num: '05',
-    title: 'Criação de Artes',
-    desc: 'Peças gráficas exclusivas para feed, stories e materiais de divulgação, com identidade visual única.',
-    kind: 'photo',
-    count: 6,
-    labelPrefix: 'Arte',
-  },
 };
 
 const modal = document.getElementById('service-modal');
