@@ -43,7 +43,15 @@ const SERVICES = {
     title: 'Social Media',
     desc: 'Planejamento estratégico, captação e edição de conteúdo, gestão de redes e calendário editorial para o crescimento real da sua marca.',
     kind: 'photo',
-    count: 6,
+    images: [
+      'assets/images/social-media/post-01.jpg',
+      'assets/images/social-media/post-02.jpg',
+      'assets/images/social-media/post-03.jpg',
+      'assets/images/social-media/post-04.jpg',
+      'assets/images/social-media/post-05.jpg',
+      'assets/images/social-media/post-06.jpg',
+      'assets/images/social-media/post-07.jpg',
+    ],
     labelPrefix: 'Post',
   },
   storymaker: {
