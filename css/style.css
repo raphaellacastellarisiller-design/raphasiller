@@ -323,11 +323,11 @@ p { color: var(--ink-soft); }
   outline-offset: 2px;
 }
 
-.tab-pink { background: #E8A6BC; color: var(--wine-dark); }
-.tab-wine { background: var(--wine); color: var(--cream); }
-.tab-cream { background: var(--cream-alt); color: var(--wine); }
-.tab-black { background: #1C1310; color: var(--cream); }
-.tab-terracotta { background: var(--terracotta-dark); color: var(--cream); }
+.tab-pink { background: #F07AA3; color: var(--wine-dark); }
+.tab-wine { background: #C4223F; color: var(--cream); }
+.tab-gold { background: #F0C24E; color: var(--wine-dark); }
+.tab-orange { background: #E8783C; color: var(--wine-dark); }
+.tab-terracotta { background: #B8492E; color: var(--cream); }
 
 .folder-panel {
   background: var(--wine);
