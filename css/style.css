@@ -230,6 +230,10 @@ p { color: var(--ink-soft); }
   object-fit: cover;
   display: block;
 }
+.prop-folder { background: var(--cream); }
+.prop-folder svg { width: 100%; height: 100%; display: block; }
+.prop-folder::after { display: none; }
+
 .ph-1 { background: linear-gradient(145deg, var(--wine) 0%, var(--terracotta-dark) 100%); }
 .ph-2 { background: linear-gradient(145deg, var(--terracotta) 0%, var(--wine) 100%); }
 .ph-3 { background: linear-gradient(160deg, var(--wine-dark) 0%, var(--terracotta) 100%); }
