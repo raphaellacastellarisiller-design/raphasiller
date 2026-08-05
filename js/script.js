@@ -62,7 +62,14 @@ const SERVICES = {
     title: 'Registros Orgânicos',
     desc: 'Fotos autênticas feitas no celular, para o dia a dia da sua marca, eventos ou ensaios fotográficos — sempre com naturalidade e verdade.',
     kind: 'photo',
-    count: 6,
+    images: [
+      'assets/images/registros/aniversario-01.jpg',
+      'assets/images/registros/aniversario-02.jpg',
+      'assets/images/registros/casamento-01.jpg',
+      'assets/images/registros/casamento-02.jpg',
+      'assets/images/registros/casamento-03.jpg',
+      'assets/images/registros/casamento-04.jpg',
+    ],
     labelPrefix: 'Registro',
   },
   'criacao-artes': {
@@ -88,10 +95,21 @@ let lastTrigger = null;
 
 function buildGallery(service) {
   modalGallery.innerHTML = '';
-  for (let i = 1; i <= service.count; i++) {
+  const total = service.images ? service.images.length : service.count;
+
+  for (let i = 1; i <= total; i++) {
     const tile = document.createElement('div');
-    const gradientClass = `ph-${((i - 1) % 6) + 1}`;
-    tile.className = `media-tile media-${service.kind} ${gradientClass}`;
+    tile.className = `media-tile media-${service.kind}`;
+
+    if (service.images) {
+      const img = document.createElement('img');
+      img.src = service.images[i - 1];
+      img.alt = `${service.title} — ${service.labelPrefix} ${String(i).padStart(2, '0')}`;
+      img.loading = 'lazy';
+      tile.appendChild(img);
+    } else {
+      tile.classList.add(`ph-${((i - 1) % 6) + 1}`);
+    }
 
     if (service.kind === 'video') {
       const play = document.createElement('span');
