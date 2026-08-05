@@ -53,8 +53,8 @@ const SERVICES = {
     desc: 'Eternizando os momentos mágicos do seu evento em tempo real, direto no story do Instagram.',
     kind: 'story',
     videos: [
-      { src: 'assets/videos/storymaker/story-01.mp4', poster: 'assets/videos/storymaker/story-01-poster.jpg' },
-      { src: 'assets/videos/storymaker/story-02.mp4', poster: 'assets/videos/storymaker/story-02-poster.jpg' },
+      { src: 'assets/videos/storymaker/story-01.mp4', poster: 'assets/videos/storymaker/story-01-poster.jpg', wide: true },
+      { src: 'assets/videos/storymaker/story-02.mp4', poster: 'assets/videos/storymaker/story-02-poster.jpg', wide: true },
       { src: 'assets/videos/storymaker/story-03.mp4', poster: 'assets/videos/storymaker/story-03-poster.jpg' },
       { src: 'assets/videos/storymaker/story-04.mp4', poster: 'assets/videos/storymaker/story-04-poster.jpg' },
     ],
@@ -132,6 +132,7 @@ function buildGallery(service) {
       video.playsInline = true;
       video.preload = 'metadata';
       tile.appendChild(video);
+      if (service.videos[i - 1].wide) tile.classList.add('media-story-wide');
     } else {
       tile.classList.add(`ph-${((i - 1) % 6) + 1}`);
     }
