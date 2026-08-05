@@ -276,11 +276,16 @@ p { color: var(--ink-soft); }
   padding: 36px 30px;
   border-radius: 6px;
   border: 1px solid rgba(110, 30, 44, 0.08);
+  cursor: pointer;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 .service-card:hover {
   transform: translateY(-6px);
   box-shadow: 0 20px 40px rgba(110, 30, 44, 0.12);
+}
+.service-card:focus-visible {
+  outline: 2px solid var(--wine);
+  outline-offset: 4px;
 }
 
 .service-num {
@@ -294,6 +299,153 @@ p { color: var(--ink-soft); }
 
 .service-card h3 { color: var(--wine); margin-bottom: 10px; }
 .service-card p { font-size: 0.95rem; }
+
+.service-hint {
+  display: inline-block;
+  margin-top: 16px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  color: var(--pink-dark);
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+.service-card:hover .service-hint,
+.service-card:focus-visible .service-hint {
+  color: var(--wine);
+  transform: translateX(3px);
+}
+
+/* ===== Modal de exemplos por serviço ===== */
+.service-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.service-modal[hidden] { display: none; }
+
+.service-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(42, 10, 20, 0.72);
+  animation: modal-fade 0.25s ease;
+}
+
+.service-modal-panel {
+  position: relative;
+  background: var(--cream);
+  max-width: 720px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  border-radius: 10px;
+  padding: 48px 44px;
+  box-shadow: 0 30px 70px rgba(20, 5, 10, 0.4);
+  animation: modal-pop 0.3s cubic-bezier(0.2, 0.8, 0.3, 1);
+}
+
+.service-modal-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: var(--cream-alt);
+  color: var(--wine);
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.service-modal-close:hover { background: var(--pink); }
+
+.service-modal-panel #modal-title { margin-bottom: 12px; }
+.service-modal-panel #modal-desc {
+  max-width: 55ch;
+  margin-bottom: 32px;
+}
+
+.service-modal-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.media-tile {
+  position: relative;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(78, 21, 32, 0.15);
+}
+.media-tile-label {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  color: var(--white);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+}
+
+.media-photo { aspect-ratio: 1 / 1; }
+
+.media-video { aspect-ratio: 16 / 9; grid-column: 1 / -1; }
+.media-play {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.media-play::before {
+  content: '';
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.9);
+}
+.media-play::after {
+  content: '';
+  position: absolute;
+  border-style: solid;
+  border-width: 9px 0 9px 15px;
+  border-color: transparent transparent transparent var(--wine);
+  margin-left: 4px;
+}
+
+.media-story {
+  aspect-ratio: 9 / 16;
+  grid-column: span 1;
+}
+.media-story::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  height: 3px;
+  border-radius: 2px;
+  background: rgba(255,255,255,0.85);
+}
+
+@keyframes modal-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes modal-pop {
+  from { opacity: 0; transform: translateY(16px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .service-modal-backdrop, .service-modal-panel { animation: none; }
+}
 
 /* ===== Portfolio ===== */
 .portfolio {
@@ -454,4 +606,7 @@ p { color: var(--ink-soft); }
   .rotate-left { margin-top: 0; }
   .rotate-right { margin-left: 0; margin-top: -20px; }
   .about-media { flex-direction: column; align-items: center; }
+
+  .service-modal-panel { padding: 36px 22px; }
+  .service-modal-gallery { grid-template-columns: repeat(2, 1fr); }
 }

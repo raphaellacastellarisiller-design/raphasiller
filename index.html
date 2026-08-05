@@ -82,38 +82,55 @@
       <h2 class="center">Serviços feitos sob <em>medida</em></h2>
 
       <div class="service-grid">
-        <article class="service-card reveal">
+        <article class="service-card reveal" data-service="social-media" role="button" tabindex="0" aria-haspopup="dialog">
           <span class="service-num">01</span>
           <h3>Social Media</h3>
           <p>Planejamento estratégico de conteúdo, gestão de redes e calendário editorial pensado para o crescimento real da sua marca.</p>
+          <span class="service-hint">Ver exemplos ↗</span>
         </article>
 
-        <article class="service-card reveal">
+        <article class="service-card reveal" data-service="storymaker" role="button" tabindex="0" aria-haspopup="dialog">
           <span class="service-num">02</span>
           <h3>Storymaker</h3>
           <p>Criação de stories dinâmicos e autênticos que aproximam sua marca do público, dia após dia.</p>
+          <span class="service-hint">Ver exemplos ↗</span>
         </article>
 
-        <article class="service-card reveal">
+        <article class="service-card reveal" data-service="videomaker" role="button" tabindex="0" aria-haspopup="dialog">
           <span class="service-num">03</span>
           <h3>Videomaker</h3>
           <p>Produção e edição de vídeos que comunicam com clareza, ritmo e encantam quem assiste.</p>
+          <span class="service-hint">Ver exemplos ↗</span>
         </article>
 
-        <article class="service-card reveal">
+        <article class="service-card reveal" data-service="registros-organicos" role="button" tabindex="0" aria-haspopup="dialog">
           <span class="service-num">04</span>
           <h3>Registros Orgânicos</h3>
           <p>Fotos autênticas feitas no celular, capturando o dia a dia da sua marca com naturalidade e verdade.</p>
+          <span class="service-hint">Ver exemplos ↗</span>
         </article>
 
-        <article class="service-card reveal">
+        <article class="service-card reveal" data-service="criacao-artes" role="button" tabindex="0" aria-haspopup="dialog">
           <span class="service-num">05</span>
           <h3>Criação de Artes</h3>
           <p>Peças gráficas exclusivas para feed, stories e materiais de divulgação, com identidade visual única.</p>
+          <span class="service-hint">Ver exemplos ↗</span>
         </article>
       </div>
     </div>
   </section>
+
+  <!-- MODAL: exemplos por serviço -->
+  <div class="service-modal" id="service-modal" hidden>
+    <div class="service-modal-backdrop" data-close></div>
+    <div class="service-modal-panel" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button type="button" class="service-modal-close" data-close aria-label="Fechar">&times;</button>
+      <span class="service-num" id="modal-num">01</span>
+      <h3 id="modal-title">Serviço</h3>
+      <p id="modal-desc">Descrição do serviço.</p>
+      <div class="service-modal-gallery" id="modal-gallery"></div>
+    </div>
+  </div>
 
   <!-- PORTFÓLIO -->
   <section class="portfolio" id="portfolio">
