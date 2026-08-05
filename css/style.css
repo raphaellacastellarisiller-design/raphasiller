@@ -482,10 +482,6 @@ p { color: var(--ink-soft); }
   aspect-ratio: 9 / 16;
   grid-column: span 1;
 }
-.media-story.media-story-wide {
-  aspect-ratio: 16 / 9;
-  grid-column: 1 / -1;
-}
 .media-story::before {
   content: '';
   position: absolute;
@@ -496,7 +492,10 @@ p { color: var(--ink-soft); }
   border-radius: 2px;
   background: rgba(255,255,255,0.85);
 }
-.media-story-wide::before { display: none; }
+.media-tile video.video-letterbox {
+  object-fit: contain;
+  background: var(--cream-alt);
+}
 
 @keyframes modal-fade {
   from { opacity: 0; }
