@@ -60,16 +60,8 @@ const SERVICES = {
     ],
     labelPrefix: 'Story',
   },
-  videomaker: {
-    num: '03',
-    title: 'Videomaker',
-    desc: 'Produção e edição de vídeos que comunicam com clareza, ritmo e encantam quem assiste.',
-    kind: 'video',
-    count: 3,
-    labelPrefix: 'Vídeo',
-  },
   'registros-organicos': {
-    num: '04',
+    num: '03',
     title: 'Registros Orgânicos',
     desc: 'Fotos autênticas feitas no celular, para o dia a dia da sua marca, eventos ou ensaios fotográficos — sempre com naturalidade e verdade.',
     kind: 'photo',

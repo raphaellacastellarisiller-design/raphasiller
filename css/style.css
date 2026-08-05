@@ -324,7 +324,6 @@ p { color: var(--ink-soft); }
 
 .tab-pink { background: #F07AA3; color: var(--wine-dark); }
 .tab-wine { background: #C4223F; color: var(--cream); }
-.tab-gold { background: #F0C24E; color: var(--wine-dark); }
 .tab-orange { background: #E8783C; color: var(--wine-dark); }
 
 .folder-panel {
