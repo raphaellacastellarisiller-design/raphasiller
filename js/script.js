@@ -60,7 +60,7 @@ const SERVICES = {
   'registros-organicos': {
     num: '04',
     title: 'Registros Orgânicos',
-    desc: 'Fotos autênticas feitas no celular, capturando o dia a dia da sua marca com naturalidade e verdade.',
+    desc: 'Fotos autênticas feitas no celular, para o dia a dia da sua marca, eventos ou ensaios fotográficos — sempre com naturalidade e verdade.',
     kind: 'photo',
     count: 6,
     labelPrefix: 'Registro',
