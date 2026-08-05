@@ -35,7 +35,7 @@ const SERVICES = {
   'social-media': {
     num: '01',
     title: 'Social Media',
-    desc: 'Planejamento estratégico de conteúdo, gestão de redes e calendário editorial pensado para o crescimento real da sua marca.',
+    desc: 'Planejamento estratégico, captação e edição de conteúdo, gestão de redes e calendário editorial para o crescimento real da sua marca.',
     kind: 'photo',
     count: 6,
     labelPrefix: 'Post',
