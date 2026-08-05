@@ -17,18 +17,24 @@ mainNav.querySelectorAll('a').forEach((link) => {
 });
 
 // Animação de entrada ao rolar a página
-const revealEls = document.querySelectorAll('.reveal');
+// Só "arma" a animação (deixando invisível) se o navegador suportar
+// IntersectionObserver — assim o conteúdo nunca fica preso invisível
+// caso o JS não rode (ex.: preview rápido do iOS).
+if ('IntersectionObserver' in window) {
+  const revealEls = document.querySelectorAll('.reveal');
+  revealEls.forEach((el) => el.classList.add('reveal-armed'));
 
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('is-visible');
-      revealObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.15 });
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
 
-revealEls.forEach((el) => revealObserver.observe(el));
+  revealEls.forEach((el) => revealObserver.observe(el));
+}
 
 // Modal de exemplos por serviço
 const SERVICES = {
