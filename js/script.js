@@ -52,7 +52,12 @@ const SERVICES = {
     sub: 'Cobertura de eventos',
     desc: 'Eternizando os momentos mágicos do seu evento em tempo real, direto no story do Instagram.',
     kind: 'story',
-    count: 4,
+    videos: [
+      { src: 'assets/videos/storymaker/story-01.mp4', poster: 'assets/videos/storymaker/story-01-poster.jpg' },
+      { src: 'assets/videos/storymaker/story-02.mp4', poster: 'assets/videos/storymaker/story-02-poster.jpg' },
+      { src: 'assets/videos/storymaker/story-03.mp4', poster: 'assets/videos/storymaker/story-03-poster.jpg' },
+      { src: 'assets/videos/storymaker/story-04.mp4', poster: 'assets/videos/storymaker/story-04-poster.jpg' },
+    ],
     labelPrefix: 'Story',
   },
   videomaker: {
@@ -92,7 +97,9 @@ let lastTrigger = null;
 
 function buildGallery(service) {
   modalGallery.innerHTML = '';
-  const total = service.images ? service.images.length : service.count;
+  const total = service.images ? service.images.length
+    : service.videos ? service.videos.length
+    : service.count;
 
   for (let i = 1; i <= total; i++) {
     const tile = document.createElement('div');
@@ -117,6 +124,14 @@ function buildGallery(service) {
           openThisPhoto();
         }
       });
+    } else if (service.videos) {
+      const video = document.createElement('video');
+      video.src = service.videos[i - 1].src;
+      video.poster = service.videos[i - 1].poster;
+      video.controls = true;
+      video.playsInline = true;
+      video.preload = 'metadata';
+      tile.appendChild(video);
     } else {
       tile.classList.add(`ph-${((i - 1) % 6) + 1}`);
     }
@@ -127,10 +142,12 @@ function buildGallery(service) {
       tile.appendChild(play);
     }
 
-    const label = document.createElement('span');
-    label.className = 'media-tile-label';
-    label.textContent = `${service.labelPrefix} ${String(i).padStart(2, '0')}`;
-    tile.appendChild(label);
+    if (!service.videos) {
+      const label = document.createElement('span');
+      label.className = 'media-tile-label';
+      label.textContent = `${service.labelPrefix} ${String(i).padStart(2, '0')}`;
+      tile.appendChild(label);
+    }
 
     modalGallery.appendChild(tile);
   }
