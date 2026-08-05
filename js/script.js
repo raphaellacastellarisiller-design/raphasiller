@@ -43,7 +43,8 @@ const SERVICES = {
   storymaker: {
     num: '02',
     title: 'Storymaker',
-    desc: 'Criação de stories dinâmicos e autênticos que aproximam sua marca do público, dia após dia.',
+    sub: 'Cobertura de eventos',
+    desc: 'Eternizando os momentos mágicos do seu evento em tempo real, direto no story do Instagram.',
     kind: 'story',
     count: 4,
     labelPrefix: 'Story',
@@ -78,6 +79,7 @@ const modal = document.getElementById('service-modal');
 const modalPanel = modal.querySelector('.service-modal-panel');
 const modalNum = document.getElementById('modal-num');
 const modalTitle = document.getElementById('modal-title');
+const modalSub = document.getElementById('modal-sub');
 const modalDesc = document.getElementById('modal-desc');
 const modalGallery = document.getElementById('modal-gallery');
 const serviceCards = document.querySelectorAll('.service-card[data-service]');
@@ -113,6 +115,7 @@ function openModal(serviceKey, triggerEl) {
   lastTrigger = triggerEl;
   modalNum.textContent = service.num;
   modalTitle.textContent = service.title;
+  modalSub.textContent = service.sub || '';
   modalDesc.textContent = service.desc;
   buildGallery(service);
 

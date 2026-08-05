@@ -300,6 +300,19 @@ p { color: var(--ink-soft); }
 .service-card h3 { color: var(--wine); margin-bottom: 10px; }
 .service-card p { font-size: 0.95rem; }
 
+.service-sub {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--terracotta-dark);
+  margin-top: -6px;
+  margin-bottom: 12px;
+}
+#modal-sub.service-sub { margin-bottom: 20px; }
+#modal-sub:empty { display: none; }
+
 .service-hint {
   display: inline-block;
   margin-top: 16px;
