@@ -419,6 +419,10 @@ p { color: var(--ink-soft); }
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
 }
+.service-modal-gallery.gallery-stacked {
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
 
 .media-tile {
   position: relative;

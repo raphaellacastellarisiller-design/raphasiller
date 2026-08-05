@@ -97,6 +97,7 @@ let lastTrigger = null;
 
 function buildGallery(service) {
   modalGallery.innerHTML = '';
+  modalGallery.classList.toggle('gallery-stacked', service.kind === 'story');
   const total = service.images ? service.images.length
     : service.videos ? service.videos.length
     : service.count;
