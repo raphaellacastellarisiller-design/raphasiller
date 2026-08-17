@@ -51,6 +51,7 @@ const SERVICES = {
       'assets/images/social-media/post-05.jpg',
       'assets/images/social-media/post-06.jpg',
       'assets/images/social-media/post-07.jpg',
+      { video: 'assets/videos/social-media/post-08.mp4', poster: 'assets/videos/social-media/post-08-poster.jpg' },
     ],
     labelPrefix: 'Post',
   },
@@ -102,13 +103,26 @@ function buildGallery(service) {
     : service.videos ? service.videos.length
     : service.count;
 
+  const photoItems = service.images ? service.images.filter((item) => typeof item === 'string') : [];
+
   for (let i = 1; i <= total; i++) {
     const tile = document.createElement('div');
     tile.className = `media-tile media-${service.kind}`;
+    const item = service.images ? service.images[i - 1] : null;
 
-    if (service.images) {
+    if (item && typeof item === 'object' && item.video) {
+      const video = document.createElement('video');
+      video.src = item.video;
+      video.poster = item.poster;
+      video.controls = true;
+      video.playsInline = true;
+      video.preload = 'metadata';
+      tile.appendChild(video);
+      tile.classList.remove(`media-${service.kind}`);
+      tile.classList.add('media-video', 'media-tall');
+    } else if (service.images) {
       const img = document.createElement('img');
-      img.src = service.images[i - 1];
+      img.src = item;
       img.alt = `${service.title} — ${service.labelPrefix} ${String(i).padStart(2, '0')}`;
       img.loading = 'lazy';
       tile.appendChild(img);
@@ -116,8 +130,8 @@ function buildGallery(service) {
       tile.classList.add('media-tile-clickable');
       tile.setAttribute('role', 'button');
       tile.setAttribute('tabindex', '0');
-      const photoIndex = i - 1;
-      const openThisPhoto = () => openLightbox(service.images, photoIndex, tile);
+      const photoIndex = photoItems.indexOf(item);
+      const openThisPhoto = () => openLightbox(photoItems, photoIndex, tile);
       tile.addEventListener('click', openThisPhoto);
       tile.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
@@ -144,7 +158,7 @@ function buildGallery(service) {
       tile.appendChild(play);
     }
 
-    if (!service.videos) {
+    if (!service.videos && !(item && typeof item === 'object' && item.video)) {
       const label = document.createElement('span');
       label.className = 'media-tile-label';
       label.textContent = `${service.labelPrefix} ${String(i).padStart(2, '0')}`;

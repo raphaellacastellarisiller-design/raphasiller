@@ -452,6 +452,7 @@ p { color: var(--ink-soft); }
 .media-photo { aspect-ratio: 1 / 1; }
 
 .media-video { aspect-ratio: 16 / 9; grid-column: 1 / -1; }
+.media-video.media-tall { aspect-ratio: 9 / 16; }
 .media-play {
   position: absolute;
   inset: 0;
