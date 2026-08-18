@@ -268,44 +268,68 @@ p { color: var(--ink-soft); }
   background: var(--cream-alt);
   padding: 100px 0;
 }
-.resume h2 { margin-bottom: 20px; }
+.resume h2 { margin-bottom: 44px; }
 
-.resume-intro {
-  max-width: 640px;
+.cv {
+  max-width: 720px;
   margin: 0 auto;
+  background: var(--white);
+  border: 1px solid rgba(74, 31, 38, 0.14);
+  border-radius: 4px;
+  box-shadow: 0 30px 60px -30px rgba(42, 19, 25, 0.25);
+  padding: 52px 56px;
 }
 
-.resume-stats {
-  display: flex;
-  justify-content: center;
-  gap: 60px;
-  margin: 44px 0 60px;
-  flex-wrap: wrap;
+.cv-header {
+  text-align: center;
+  border-bottom: 2px solid var(--wine);
+  padding-bottom: 24px;
+  margin-bottom: 36px;
 }
-.resume-stat { text-align: center; max-width: 200px; }
-.resume-stat-num {
-  display: block;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 2rem;
+.cv-name {
+  font-size: 1.7rem;
   color: var(--wine);
-  line-height: 1.1;
   margin-bottom: 6px;
 }
-.resume-stat-label {
-  font-size: 0.8rem;
+.cv-tagline {
+  font-size: 0.92rem;
   color: var(--ink-soft);
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
 
-.resume-courses { max-width: 720px; margin: 0 auto; }
-.resume-courses-title {
-  text-align: center;
-  color: var(--wine);
-  margin-bottom: 20px;
-  font-size: 1.3rem;
+.cv-section { margin-bottom: 32px; }
+.cv-section:last-child { margin-bottom: 0; }
+
+.cv-section-title {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--terracotta-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(74, 31, 38, 0.14);
 }
+
+.cv-entry-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 4px;
+}
+.cv-entry-title { font-weight: 700; color: var(--wine); }
+.cv-entry-period {
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+.cv-entry-desc { color: var(--ink-soft); font-size: 0.96rem; }
 
 .course-list { list-style: none; margin: 0; padding: 0; }
 .course-item {
@@ -313,7 +337,7 @@ p { color: var(--ink-soft); }
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  padding: 18px 4px;
+  padding: 14px 0;
   border-bottom: 1px solid rgba(74, 31, 38, 0.14);
   flex-wrap: wrap;
 }
@@ -333,6 +357,10 @@ p { color: var(--ink-soft); }
 }
 .status-done { background: rgba(74, 31, 38, 0.08); color: var(--wine); }
 .status-progress { background: var(--terracotta); color: var(--wine-dark); }
+
+@media (max-width: 640px) {
+  .cv { padding: 36px 24px; }
+}
 
 /* ===== Services ===== */
 .services { padding: 110px 0; }
