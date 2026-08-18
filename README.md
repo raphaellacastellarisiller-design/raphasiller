@@ -1,6 +1,6 @@
 # Yus Beauty — site
 
-Site de vendas (landing page) da Yus Beauty, marca de cosméticos à base de jussara.
+Site de vendas (landing page) da Yus Beauty, marca de cosméticos à base de juçara.
 Site estático (HTML, CSS e JavaScript puros, sem build) com carrinho de compras e
 finalização de pedido via WhatsApp.
 
@@ -34,7 +34,7 @@ isso, é só ajustar o texto nas duas listas de ingredientes dentro do `index.ht
 As imagens que você enviou na conversa (logo e fotos do gloss/blush) não ficam
 acessíveis como arquivo para o site — por isso a logo "Yus Beauty" e as
 ilustrações dos produtos na página foram recriadas em SVG, usando a mesma
-paleta roxo/ameixa e os elementos de folha e jussara das suas fotos. Para usar
+paleta roxo/ameixa e os elementos de folha e juçara das suas fotos. Para usar
 as fotos reais:
 
 1. Salve os arquivos de imagem (logo em `.svg` ou `.png`, fotos dos produtos
