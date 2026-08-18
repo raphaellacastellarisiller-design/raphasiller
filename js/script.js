@@ -52,6 +52,7 @@ const SERVICES = {
       'assets/images/social-media/post-06.jpg',
       'assets/images/social-media/post-07.jpg',
       { video: 'assets/videos/social-media/post-08.mp4', poster: 'assets/videos/social-media/post-08-poster.jpg' },
+      { video: 'assets/videos/social-media/post-09.mp4', poster: 'assets/videos/social-media/post-09-poster.jpg' },
     ],
     labelPrefix: 'Post',
   },
