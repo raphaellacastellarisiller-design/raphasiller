@@ -24,6 +24,20 @@ if ('IntersectionObserver' in window) {
   const revealEls = document.querySelectorAll('.reveal');
   revealEls.forEach((el) => el.classList.add('reveal-armed'));
 
+  // Elementos que dividem o mesmo pai (ex.: cards de depoimento, polaroids
+  // do portfólio) entram em cascata, um pouco depois um do outro.
+  const revealGroups = new Map();
+  revealEls.forEach((el) => {
+    const siblings = revealGroups.get(el.parentElement) || [];
+    siblings.push(el);
+    revealGroups.set(el.parentElement, siblings);
+  });
+  revealGroups.forEach((siblings) => {
+    siblings.forEach((el, i) => {
+      el.style.transitionDelay = `${Math.min(i * 100, 400)}ms`;
+    });
+  });
+
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
