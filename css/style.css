@@ -263,6 +263,77 @@ p { color: var(--ink-soft); }
 .about h2 { color: var(--cream); }
 .about p { color: rgba(247, 238, 227, 0.85); margin-bottom: 16px; max-width: 52ch; }
 
+/* ===== Formação / Trajetória ===== */
+.resume {
+  background: var(--cream-alt);
+  padding: 100px 0;
+}
+.resume h2 { margin-bottom: 20px; }
+
+.resume-intro {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.resume-stats {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  margin: 44px 0 60px;
+  flex-wrap: wrap;
+}
+.resume-stat { text-align: center; max-width: 200px; }
+.resume-stat-num {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 2rem;
+  color: var(--wine);
+  line-height: 1.1;
+  margin-bottom: 6px;
+}
+.resume-stat-label {
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.resume-courses { max-width: 720px; margin: 0 auto; }
+.resume-courses-title {
+  text-align: center;
+  color: var(--wine);
+  margin-bottom: 20px;
+  font-size: 1.3rem;
+}
+
+.course-list { list-style: none; margin: 0; padding: 0; }
+.course-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 4px;
+  border-bottom: 1px solid rgba(74, 31, 38, 0.14);
+  flex-wrap: wrap;
+}
+.course-item:last-child { border-bottom: none; }
+
+.course-name { font-weight: 600; color: var(--wine); }
+.course-org { font-weight: 400; color: var(--ink-soft); font-size: 0.92rem; }
+
+.course-status {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 5px 12px;
+  border-radius: var(--radius-pill);
+  white-space: nowrap;
+}
+.status-done { background: rgba(74, 31, 38, 0.08); color: var(--wine); }
+.status-progress { background: var(--terracotta); color: var(--wine-dark); }
+
 /* ===== Services ===== */
 .services { padding: 110px 0; }
 .services h2 { margin-bottom: 56px; }
