@@ -25,7 +25,8 @@ if ('IntersectionObserver' in window) {
   revealEls.forEach((el) => el.classList.add('reveal-armed'));
 
   // Elementos que dividem o mesmo pai (ex.: cards de depoimento, polaroids
-  // do portfólio) entram em cascata, um pouco depois um do outro.
+  // do portfólio) entram em cascata, um pouco depois um do outro, alternando
+  // o lado de entrada (esquerda/direita) pra dar mais dinamismo.
   const revealGroups = new Map();
   revealEls.forEach((el) => {
     const siblings = revealGroups.get(el.parentElement) || [];
@@ -35,6 +36,7 @@ if ('IntersectionObserver' in window) {
   revealGroups.forEach((siblings) => {
     siblings.forEach((el, i) => {
       el.style.transitionDelay = `${Math.min(i * 100, 400)}ms`;
+      el.style.setProperty('--reveal-x', i % 2 === 0 ? '-48px' : '48px');
     });
   });
 
