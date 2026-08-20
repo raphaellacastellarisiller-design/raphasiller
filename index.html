@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minha Agenda</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%93%85%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app">
+
+  <header class="app-header">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true">📅</span>
+      <h1>Minha Agenda</h1>
+    </div>
+    <nav class="tabs" role="tablist" aria-label="Seções da agenda">
+      <button class="tab-btn is-active" id="tab-btn-calendario" role="tab" aria-selected="true" aria-controls="view-calendario">Calendário</button>
+      <button class="tab-btn" id="tab-btn-panorama" role="tab" aria-selected="false" aria-controls="view-panorama">Panorama geral</button>
+    </nav>
+  </header>
+
+  <main class="app-main">
+
+    <!-- VISÃO: CALENDÁRIO -->
+    <section id="view-calendario" class="view is-active" role="tabpanel" aria-labelledby="tab-btn-calendario">
+      <div class="calendar-toolbar">
+        <div class="month-nav">
+          <button id="btn-prev-month" class="icon-btn" aria-label="Mês anterior">‹</button>
+          <h2 id="month-title">—</h2>
+          <button id="btn-next-month" class="icon-btn" aria-label="Próximo mês">›</button>
+        </div>
+        <button id="btn-today" class="btn-secondary">Hoje</button>
+      </div>
+
+      <div class="weekday-row">
+        <span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span><span>Sex</span><span>Sáb</span><span>Dom</span>
+      </div>
+
+      <div id="calendar-grid" class="calendar-grid" aria-live="polite"></div>
+    </section>
+
+    <!-- VISÃO: PANORAMA GERAL -->
+    <section id="view-panorama" class="view" role="tabpanel" aria-labelledby="tab-btn-panorama">
+      <div class="stat-cards" id="stat-cards"></div>
+
+      <div class="panorama-lists">
+        <div class="panel">
+          <h3>Próximos compromissos</h3>
+          <ul id="upcoming-list" class="event-list"></ul>
+        </div>
+        <div class="panel">
+          <h3>Compromissos de hoje</h3>
+          <ul id="today-list" class="event-list"></ul>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- MODAL: HORÁRIOS DO DIA -->
+<div id="day-modal" class="modal-overlay" hidden>
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-date-title">
+    <div class="modal-header">
+      <div>
+        <h2 id="modal-date-title">—</h2>
+        <p id="modal-date-sub" class="modal-sub">—</p>
+      </div>
+      <button id="btn-close-modal" class="icon-btn" aria-label="Fechar">✕</button>
+    </div>
+    <div class="modal-body">
+      <ul id="slot-list" class="slot-list"></ul>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
