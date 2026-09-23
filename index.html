@@ -4,43 +4,43 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Angel Z · Moda Praia</title>
-  <meta name="description" content="Angel Z — moda praia sofisticada com espírito de resort de luxo. Biquínis, maiôs, bodies, saídas de praia e acessórios." />
-  <meta name="theme-color" content="#FBF8F3" />
+  <meta name="description" content="Angel Z — moda praia sofisticada com espírito de resort. Biquínis, maiôs, bodies, saídas de praia e acessórios." />
+  <meta name="theme-color" content="#F4F3EF" />
   <link rel="icon" href="assets/img/logo-angel-z.jpg" />
 
-  <!-- Fontes: Cormorant Garamond (títulos editoriais) + Jost (texto/UI) -->
+  <!-- Fontes: Archivo (sans em negrito, estilo editorial) + Pinyon Script (cursiva caligráfica) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700;800&family=Pinyon+Script&display=swap" rel="stylesheet" />
 
-  <!-- Tailwind CSS via CDN + configuração da marca -->
+  <!-- Tailwind CSS via CDN + configuração da marca (paleta preto & branco) -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            sand:   { 50: '#FBF8F3', 100: '#F5EFE6', 200: '#EBE1D2', 300: '#DCCCB5', 500: '#A8916F' },
-            gold:   { 300: '#E2C98F', 400: '#D4B06A', 500: '#C6A15B', 600: '#A8843F' },
-            petrol: { 700: '#24474B', 800: '#1C3A3E', 900: '#132B2E' },
-            ink:    '#121212',
+            ink:   { DEFAULT: '#0B0B0B', 800: '#1A1A1A', 700: '#2B2B2B', 500: '#6B6B6B', 300: '#B5B5B2' },
+            paper: { DEFAULT: '#F4F3EF', 200: '#E8E7E2', 300: '#D9D8D2' },
           },
           fontFamily: {
-            serif: ['"Cormorant Garamond"', 'ui-serif', 'Georgia', 'serif'],
-            sans:  ['Jost', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            sans:   ['Archivo', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            script: ['"Pinyon Script"', 'cursive'],
           },
-          letterSpacing: { luxe: '0.28em' },
+          borderRadius: { card: '2.5rem', 'card-sm': '1.75rem' },
+          letterSpacing: { label: '0.22em' },
           keyframes: {
             marquee:  { '0%': { transform: 'translateX(0)' }, '100%': { transform: 'translateX(-50%)' } },
+            marqueeR: { '0%': { transform: 'translateX(-50%)' }, '100%': { transform: 'translateX(0)' } },
             bump:     { '0%,100%': { transform: 'scale(1)' }, '40%': { transform: 'scale(1.45)' } },
-            floaty:   { '0%,100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-8px)' } },
-            kenburns: { '0%': { transform: 'scale(1.08)' }, '100%': { transform: 'scale(1)' } },
-            pulseRing:{ '0%': { transform: 'scale(1)', opacity: '.55' }, '100%': { transform: 'scale(1.7)', opacity: '0' } },
+            kenburns: { '0%': { transform: 'scale(1.1)' }, '100%': { transform: 'scale(1)' } },
+            pulseRing:{ '0%': { transform: 'scale(1)', opacity: '.5' }, '100%': { transform: 'scale(1.7)', opacity: '0' } },
           },
           animation: {
-            marquee:  'marquee 28s linear infinite',
+            marquee:  'marquee 40s linear infinite',
+            marqueeR: 'marqueeR 40s linear infinite',
+            ticker:   'marquee 28s linear infinite',
             bump:     'bump .45s ease-out',
-            floaty:   'floaty 5s ease-in-out infinite',
             kenburns: 'kenburns 2.4s cubic-bezier(.2,.7,.2,1) both',
             pulseRing:'pulseRing 2s ease-out infinite',
           },
@@ -50,32 +50,38 @@
   </script>
 
   <style>
-    /* ---------- Base ---------- */
     body { -webkit-font-smoothing: antialiased; }
-    ::selection { background: #C6A15B; color: #fff; }
+    ::selection { background: #0B0B0B; color: #F4F3EF; }
 
-    /* ---------- Scroll Reveal ---------- */
-    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1); transition-delay: var(--d, 0ms); }
+    /* Palavra em cursiva dentro dos títulos em negrito (como no modelo) */
+    .script { font-family: "Pinyon Script", cursive; font-weight: 400; font-size: 1.12em; letter-spacing: 0; line-height: .8; text-transform: none; }
+
+    /* Rótulo minúsculo em caixa alta */
+    .label { font-size: 10px; letter-spacing: .22em; text-transform: uppercase; font-weight: 600; }
+
+    /* Scroll Reveal */
+    .reveal { opacity: 0; transform: translateY(32px); transition: opacity 1s cubic-bezier(.2,.7,.2,1), transform 1s cubic-bezier(.2,.7,.2,1); transition-delay: var(--d, 0ms); }
     .reveal.is-visible { opacity: 1; transform: none; }
-    .reveal-left  { transform: translateX(-32px); }
-    .reveal-right { transform: translateX(32px); }
 
-    /* ---------- Link com sublinhado dourado animado ---------- */
-    .nav-link { position: relative; }
-    .nav-link::after { content: ""; position: absolute; left: 50%; bottom: -6px; width: 0; height: 1px; background: #C6A15B; transition: width .35s ease, left .35s ease; }
-    .nav-link:hover::after, .nav-link:focus-visible::after { width: 100%; left: 0; }
+    /* Link sublinhado animado */
+    .u-link { position: relative; }
+    .u-link::after { content: ""; position: absolute; left: 0; bottom: -4px; width: 100%; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: right; transition: transform .45s cubic-bezier(.2,.7,.2,1); }
+    .u-link:hover::after, .u-link:focus-visible::after { transform: scaleX(1); transform-origin: left; }
+    .u-link.is-static::after { transform: scaleX(1); }
+    .u-link.is-static:hover::after { transform: scaleX(.4); }
 
-    /* ---------- Botões magnéticos ---------- */
-    [data-magnetic] { transition: transform .25s cubic-bezier(.2,.7,.2,1); will-change: transform; }
+    /* Botões magnéticos */
+    [data-magnetic] { transition: transform .25s cubic-bezier(.2,.7,.2,1), background-color .3s, color .3s, border-color .3s; will-change: transform; }
 
-    /* ---------- Esconde barra de rolagem horizontal do menu mobile ---------- */
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { scrollbar-width: none; }
 
-    /* ---------- Logo: converte o monograma branco/preto em traço escuro sobre fundo claro ---------- */
+    /* Monograma (branco sobre preto) convertido para traço preto em fundo claro */
     .logo-on-light { filter: invert(1); mix-blend-mode: multiply; }
 
-    /* ---------- Acessibilidade: respeita redução de movimento ---------- */
+    /* Texto gigante vazado da faixa "Explore" */
+    .giant { font-size: clamp(64px, 11vw, 176px); line-height: .86; font-weight: 800; letter-spacing: -0.02em; text-transform: uppercase; white-space: nowrap; }
+
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
       .reveal { opacity: 1; transform: none; }
@@ -83,81 +89,76 @@
   </style>
 </head>
 
-<body class="bg-sand-50 font-sans text-ink">
+<body class="bg-paper font-sans text-ink">
 
   <!-- =========================================================
        1. BARRA DE AVISO (TOPO)
   ========================================================== -->
-  <div class="bg-ink text-sand-50 overflow-hidden">
-    <div class="flex whitespace-nowrap animate-marquee py-2.5 text-[11px] sm:text-xs font-medium uppercase tracking-luxe" aria-label="Frete grátis em compras acima de R$ 399,00">
-      <!-- Conteúdo duplicado para o marquee contínuo -->
-      <span class="mx-8">Frete grátis em compras acima de R$ 399,00</span><span class="mx-8 text-gold-400">✦</span>
-      <span class="mx-8">6x sem juros no cartão</span><span class="mx-8 text-gold-400">✦</span>
-      <span class="mx-8">Frete grátis em compras acima de R$ 399,00</span><span class="mx-8 text-gold-400">✦</span>
-      <span class="mx-8">Descontos exclusivos no PIX</span><span class="mx-8 text-gold-400">✦</span>
-      <span class="mx-8" aria-hidden="true">Frete grátis em compras acima de R$ 399,00</span><span class="mx-8 text-gold-400" aria-hidden="true">✦</span>
-      <span class="mx-8" aria-hidden="true">6x sem juros no cartão</span><span class="mx-8 text-gold-400" aria-hidden="true">✦</span>
-      <span class="mx-8" aria-hidden="true">Frete grátis em compras acima de R$ 399,00</span><span class="mx-8 text-gold-400" aria-hidden="true">✦</span>
-      <span class="mx-8" aria-hidden="true">Descontos exclusivos no PIX</span><span class="mx-8 text-gold-400" aria-hidden="true">✦</span>
+  <div class="bg-ink text-paper overflow-hidden">
+    <div class="flex whitespace-nowrap animate-ticker py-2.5 label !font-medium">
+      <span class="mx-10">Frete grátis em compras acima de R$ 399,00</span><span class="mx-10">✺</span>
+      <span class="mx-10">6x sem juros no cartão</span><span class="mx-10">✺</span>
+      <span class="mx-10">Frete grátis em compras acima de R$ 399,00</span><span class="mx-10">✺</span>
+      <span class="mx-10">Descontos exclusivos no PIX</span><span class="mx-10">✺</span>
+      <span class="mx-10" aria-hidden="true">Frete grátis em compras acima de R$ 399,00</span><span class="mx-10" aria-hidden="true">✺</span>
+      <span class="mx-10" aria-hidden="true">6x sem juros no cartão</span><span class="mx-10" aria-hidden="true">✺</span>
+      <span class="mx-10" aria-hidden="true">Frete grátis em compras acima de R$ 399,00</span><span class="mx-10" aria-hidden="true">✺</span>
+      <span class="mx-10" aria-hidden="true">Descontos exclusivos no PIX</span><span class="mx-10" aria-hidden="true">✺</span>
     </div>
   </div>
 
   <!-- =========================================================
-       2. CABEÇALHO PRINCIPAL + 3. NAVBAR (fixos ao rolar)
+       2. CABEÇALHO + 3. NAVBAR
   ========================================================== -->
-  <header id="site-header" class="sticky top-0 z-40 bg-sand-50/95 backdrop-blur border-b border-sand-200 transition-shadow duration-300">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <header id="site-header" class="sticky top-0 z-40 bg-paper/90 backdrop-blur transition-shadow duration-300">
+    <div class="max-w-[1320px] mx-auto px-4 sm:px-8">
       <div class="flex items-center justify-between gap-4 h-20">
-
         <!-- Logo -->
-        <a href="#" class="flex items-center gap-3 shrink-0 group" aria-label="Angel Z — página inicial">
-          <img src="assets/img/logo-angel-z.jpg" alt="Monograma Angel Z" class="logo-on-light h-12 w-12 object-cover transition-transform duration-500 group-hover:rotate-[8deg]" />
-          <span class="hidden sm:block font-serif text-2xl tracking-[0.2em] uppercase">Angel&nbsp;Z</span>
+        <a href="#" class="flex items-center gap-2.5 shrink-0 group" aria-label="Angel Z — página inicial">
+          <img src="assets/img/logo-angel-z.jpg" alt="" class="logo-on-light h-11 w-11 object-cover transition-transform duration-500 group-hover:rotate-[8deg]" />
+          <span class="text-2xl sm:text-[28px] font-extrabold tracking-tight uppercase">Angel Z</span>
         </a>
 
-        <!-- Busca (desktop/tablet) -->
-        <form class="hidden md:flex flex-1 max-w-md" role="search" onsubmit="event.preventDefault()">
+        <!-- Busca -->
+        <form class="hidden md:flex flex-1 max-w-sm" role="search" onsubmit="event.preventDefault()">
           <label for="search-desktop" class="sr-only">Buscar produtos</label>
           <div class="relative w-full">
-            <svg class="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-sand-500" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5" stroke-linecap="round"/></svg>
-            <input id="search-desktop" type="search" placeholder="O que você está procurando?" class="w-full rounded-full bg-white border border-sand-200 pl-11 pr-4 py-2.5 text-sm placeholder:text-sand-500 focus:outline-none focus:border-gold-500 focus:ring-2 focus:ring-gold-300/40 transition" />
+            <svg class="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-ink-500" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5" stroke-linecap="round"/></svg>
+            <input id="search-desktop" type="search" placeholder="O que você está procurando?" class="w-full rounded-full bg-paper-200 border border-transparent pl-11 pr-4 py-2.5 text-sm placeholder:text-ink-500 focus:outline-none focus:bg-white focus:border-ink transition" />
           </div>
         </form>
 
         <!-- Conta + Sacola -->
-        <div class="flex items-center gap-5 text-sm">
-          <a href="#" class="hidden lg:flex items-center gap-2 nav-link hover:text-gold-600 transition-colors">
-            <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6" stroke-linecap="round"/></svg>
-            Minha Conta
-          </a>
-          <a href="#" class="hidden sm:inline nav-link hover:text-gold-600 transition-colors">Entrar / Cadastrar</a>
-
-          <button id="cart-button" type="button" class="relative p-2 -m-2 hover:text-gold-600 transition-colors" aria-label="Abrir sacola de compras" data-magnetic>
-            <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M6 7h12l-1 13H7L6 7Z" stroke-linejoin="round"/><path d="M9 7a3 3 0 0 1 6 0" stroke-linecap="round"/></svg>
-            <span id="cart-count" class="absolute -top-1 -right-1 min-w-[20px] h-5 px-1 rounded-full bg-gold-500 text-white text-[11px] font-semibold flex items-center justify-center" aria-live="polite">0</span>
+        <div class="flex items-center gap-5 text-[13px] font-medium">
+          <a href="#" class="hidden lg:inline u-link">Minha Conta</a>
+          <a href="#" class="hidden sm:inline u-link">Entrar / Cadastrar</a>
+          <button id="cart-button" type="button" data-magnetic class="relative flex items-center gap-2 rounded-full bg-ink text-paper pl-4 pr-3 py-2 hover:bg-ink-700" aria-label="Abrir sacola de compras">
+            <span class="label !text-[10px] hidden sm:inline">Sacola</span>
+            <svg class="h-4 w-4 sm:hidden" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path d="M6 7h12l-1 13H7L6 7Z" stroke-linejoin="round"/><path d="M9 7a3 3 0 0 1 6 0" stroke-linecap="round"/></svg>
+            <span id="cart-count" class="min-w-[22px] h-[22px] px-1 rounded-full bg-paper text-ink text-[11px] font-bold flex items-center justify-center" aria-live="polite">0</span>
           </button>
         </div>
       </div>
 
-      <!-- Busca (mobile) -->
+      <!-- Busca mobile -->
       <form class="md:hidden pb-3" role="search" onsubmit="event.preventDefault()">
         <label for="search-mobile" class="sr-only">Buscar produtos</label>
         <div class="relative">
-          <svg class="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-sand-500" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5" stroke-linecap="round"/></svg>
-          <input id="search-mobile" type="search" placeholder="O que você está procurando?" class="w-full rounded-full bg-white border border-sand-200 pl-11 pr-4 py-2.5 text-sm placeholder:text-sand-500 focus:outline-none focus:border-gold-500" />
+          <svg class="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-ink-500" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5" stroke-linecap="round"/></svg>
+          <input id="search-mobile" type="search" placeholder="O que você está procurando?" class="w-full rounded-full bg-paper-200 pl-11 pr-4 py-2.5 text-sm placeholder:text-ink-500 focus:outline-none focus:bg-white focus:ring-1 focus:ring-ink" />
         </div>
       </form>
     </div>
 
     <!-- Navbar secundária -->
-    <nav class="border-t border-sand-200" aria-label="Categorias">
-      <ul class="no-scrollbar max-w-7xl mx-auto px-4 flex md:justify-center gap-8 lg:gap-12 overflow-x-auto py-3.5 text-[12px] uppercase tracking-[0.22em] font-medium">
-        <li><a href="#novidades" class="nav-link whitespace-nowrap hover:text-gold-600 transition-colors">Acessórios</a></li>
-        <li><a href="#novidades" class="nav-link whitespace-nowrap hover:text-gold-600 transition-colors">Biquínis</a></li>
-        <li><a href="#novidades" class="nav-link whitespace-nowrap hover:text-gold-600 transition-colors">Saídas de Praia</a></li>
-        <li><a href="#novidades" class="nav-link whitespace-nowrap hover:text-gold-600 transition-colors">Conjuntos</a></li>
-        <li><a href="#novidades" class="nav-link whitespace-nowrap hover:text-gold-600 transition-colors">Maiôs &amp; Bodies</a></li>
-        <li><a href="#novidades" class="nav-link whitespace-nowrap text-gold-600 hover:text-ink transition-colors">Outlet</a></li>
+    <nav aria-label="Categorias" class="border-y border-ink/10">
+      <ul class="no-scrollbar max-w-[1320px] mx-auto px-4 sm:px-8 flex md:justify-center gap-8 lg:gap-14 overflow-x-auto py-3.5 label">
+        <li><a href="#novidades" class="u-link whitespace-nowrap">Acessórios</a></li>
+        <li><a href="#novidades" class="u-link whitespace-nowrap">Biquínis</a></li>
+        <li><a href="#novidades" class="u-link whitespace-nowrap">Saídas de Praia</a></li>
+        <li><a href="#novidades" class="u-link whitespace-nowrap">Conjuntos</a></li>
+        <li><a href="#novidades" class="u-link whitespace-nowrap">Maiôs &amp; Bodies</a></li>
+        <li><a href="#novidades" class="u-link whitespace-nowrap italic">Outlet</a></li>
       </ul>
     </nav>
   </header>
@@ -165,122 +166,129 @@
   <main>
 
     <!-- =========================================================
-         4. HERO — RESORT LUXURY (grid 12 colunas)
+         4. HERO — card arredondado (grid 12 colunas)
     ========================================================== -->
-    <section class="grid grid-cols-1 lg:grid-cols-12 min-h-[calc(100vh-150px)]">
-      <!-- Bloco sólido -->
-      <div class="lg:col-span-5 bg-petrol-800 text-sand-50 relative overflow-hidden flex items-center order-2 lg:order-1">
-        <!-- Detalhe decorativo: monograma em marca d'água -->
-        <img src="assets/img/logo-angel-z.jpg" alt="" aria-hidden="true" class="absolute -right-24 -bottom-16 w-96 opacity-[0.06] mix-blend-screen pointer-events-none select-none" />
-        <div class="relative px-6 sm:px-12 lg:px-14 xl:px-20 py-16 lg:py-0">
-          <p class="reveal reveal-left text-gold-300 uppercase tracking-luxe text-xs font-medium flex items-center gap-3">
-            <span class="h-px w-10 bg-gold-400"></span>Lançamento ~ Coleção Exclusiva
-          </p>
-          <h1 class="reveal reveal-left font-serif font-bold text-5xl sm:text-6xl xl:text-7xl leading-[0.95] mt-6" style="--d:120ms">
-            Peace, Sun<br /><span class="italic font-medium text-gold-300">&amp;</span> Elegance
+    <section class="max-w-[1320px] mx-auto px-4 sm:px-8 pt-6 sm:pt-8">
+      <div class="relative grid grid-cols-1 lg:grid-cols-12 bg-ink text-paper rounded-card overflow-hidden min-h-[640px] lg:min-h-[78vh]">
+        <!-- Imagem -->
+        <div class="relative lg:col-span-7 lg:order-2 min-h-[420px] overflow-hidden">
+          <img src="assets/img/look-preto-amarracao.jpg" alt="Modelo com biquíni preto tomara que caia com amarração e acessórios dourados" class="absolute inset-0 h-full w-full object-cover object-[50%_28%] animate-kenburns" fetchpriority="high" />
+          <div class="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-ink via-ink/10 to-transparent"></div>
+        </div>
+
+        <!-- Texto -->
+        <div class="relative lg:col-span-5 lg:order-1 flex flex-col justify-end lg:justify-center px-7 sm:px-12 xl:px-16 pb-12 pt-4 lg:py-16 -mt-40 lg:mt-0 z-10">
+          <p class="reveal label text-paper/70">Lançamento ~ Coleção Exclusiva</p>
+          <h1 class="reveal mt-5 font-bold text-[44px] sm:text-6xl xl:text-[76px] leading-[0.98] tracking-tight" style="--d:120ms">
+            <span class="script">Peace,</span> <span class="whitespace-nowrap">Sun &amp;</span><br /><span class="script">Elegance</span>
           </h1>
-          <p class="reveal reveal-left mt-6 max-w-sm text-sand-200/90 font-light leading-relaxed" style="--d:220ms">
-            Peças pensadas para dias de sol sem pressa: recortes precisos, argolas douradas e tecidos que abraçam o corpo com leveza.
+          <p class="reveal mt-6 max-w-sm text-[15px] text-paper/70 font-light leading-relaxed" style="--d:220ms">
+            Recortes precisos, argolas douradas e tecidos que abraçam o corpo. Moda praia para dias de sol sem pressa.
           </p>
-          <div class="reveal reveal-left mt-10 flex flex-wrap items-center gap-6" style="--d:320ms">
-            <a href="#novidades" data-magnetic class="inline-flex items-center gap-3 bg-ink text-sand-50 px-9 py-4 text-xs uppercase tracking-luxe font-medium hover:bg-gold-500 transition-colors duration-300">
-              Comprar agora
-              <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
-            <a href="#conxa" class="nav-link text-xs uppercase tracking-luxe text-sand-200 hover:text-gold-300 transition-colors">Ver combo Conxá</a>
+          <div class="reveal mt-9 flex flex-wrap items-center gap-6" style="--d:320ms">
+            <a href="#novidades" data-magnetic class="inline-flex items-center rounded-full bg-paper text-ink px-8 py-3.5 label hover:bg-white">Comprar agora</a>
+            <a href="#conxa" class="label u-link is-static text-paper/80">Combo Conxá</a>
           </div>
-        </div>
-      </div>
-
-      <!-- Imagem -->
-      <div class="lg:col-span-7 relative overflow-hidden order-1 lg:order-2 min-h-[70vh] lg:min-h-0 bg-sand-200">
-        <img src="assets/img/look-preto-amarracao.jpg" alt="Modelo com biquíni preto tomara que caia com amarração e acessórios dourados em cenário tropical" class="absolute inset-0 h-full w-full object-cover object-[50%_25%] animate-kenburns" fetchpriority="high" />
-        <div class="absolute inset-0 bg-gradient-to-t from-ink/40 via-transparent to-transparent"></div>
-        <!-- Selo flutuante -->
-        <div class="absolute bottom-6 left-6 sm:bottom-10 sm:left-10 bg-sand-50/90 backdrop-blur px-5 py-4 animate-floaty shadow-xl">
-          <p class="text-[10px] uppercase tracking-luxe text-sand-500">Look em destaque</p>
-          <p class="font-serif text-xl mt-1">Biquíni Laço Noir</p>
-          <p class="text-sm text-gold-600 font-medium">R$ 279,00</p>
         </div>
       </div>
     </section>
 
     <!-- =========================================================
-         5. BARRA DE BENEFÍCIOS (USP BAR)
+         DECLARAÇÃO DA MARCA + imagem deslocada (como no modelo)
     ========================================================== -->
-    <section class="bg-white border-y border-sand-200" aria-label="Benefícios">
-      <ul class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-y-8 gap-x-6">
-        <li class="reveal flex items-center gap-3" style="--d:0ms">
-          <svg class="h-8 w-8 shrink-0 text-gold-500" fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18M7 15h3"/></svg>
-          <span class="text-[13px] leading-snug">Parcelamento em até <strong class="font-medium">6x no cartão</strong></span>
-        </li>
-        <li class="reveal flex items-center gap-3" style="--d:80ms">
-          <svg class="h-8 w-8 shrink-0 text-gold-500" fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.5"/><circle cx="17" cy="17.5" r="1.5"/></svg>
-          <span class="text-[13px] leading-snug">Entrega rápida para <strong class="font-medium">todo o Brasil</strong></span>
-        </li>
-        <li class="reveal flex items-center gap-3" style="--d:160ms">
-          <svg class="h-8 w-8 shrink-0 text-gold-500" fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24"><path d="m12 3 9 9-9 9-9-9 9-9Z"/><path d="m8.5 12 3.5-3.5 3.5 3.5-3.5 3.5z"/></svg>
-          <span class="text-[13px] leading-snug">Descontos exclusivos <strong class="font-medium">no PIX</strong></span>
-        </li>
-        <li class="reveal flex items-center gap-3" style="--d:240ms">
-          <svg class="h-8 w-8 shrink-0 text-gold-500" fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 19l-4 1Z" stroke-linejoin="round"/><path d="M9 10h6M9 13h4" stroke-linecap="round"/></svg>
-          <span class="text-[13px] leading-snug">Atendimento personalizado <strong class="font-medium">via WhatsApp</strong></span>
-        </li>
-        <li class="reveal flex items-center gap-3 col-span-2 md:col-span-1" style="--d:320ms">
-          <svg class="h-8 w-8 shrink-0 text-gold-500" fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24"><path d="M12 3 5 6v6c0 4.4 3 7.8 7 9 4-1.2 7-4.6 7-9V6l-7-3Z" stroke-linejoin="round"/><path d="m9 12 2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <span class="text-[13px] leading-snug">Loja 100% segura <strong class="font-medium">e blindada</strong></span>
-        </li>
-      </ul>
+    <section class="max-w-[1320px] mx-auto px-4 sm:px-8 py-20 lg:py-28 grid lg:grid-cols-12 gap-10">
+      <div class="lg:col-span-7 reveal">
+        <p class="text-[26px] sm:text-4xl font-semibold leading-[1.15] tracking-tight max-w-2xl">
+          Peças criadas para quem vive o verão com intenção: do mergulho ao pôr do sol, com a <span class="script text-[1.25em]">leveza</span> de um resort e a força de um corpo que se sente bem.
+        </p>
+        <p class="label mt-6 text-ink-500">Sinta-se forte no seu corpo</p>
+      </div>
+      <div class="lg:col-span-5 lg:pt-44 reveal" style="--d:150ms">
+        <div class="rounded-card overflow-hidden aspect-[4/3] group">
+          <img src="assets/img/flatlay-praia.jpg" alt="Canga, bolsa de tela, óculos escuros e revista sobre a areia" class="h-full w-full object-cover transition-transform duration-[1.6s] ease-out group-hover:scale-105" loading="lazy" />
+        </div>
+      </div>
     </section>
 
     <!-- =========================================================
-         6. DESTAQUE — CONXÁ BRONZEADOR (promoção exclusiva)
+         FAIXA "EXPLORE AS COLEÇÕES" — texto gigante + cards
     ========================================================== -->
-    <section id="conxa" class="relative py-20 lg:py-28 overflow-hidden">
-      <!-- Fundo: cenário tropical suavizado -->
-      <img src="assets/img/cenario-tropical.jpg" alt="" aria-hidden="true" class="absolute inset-0 h-full w-full object-cover opacity-25" loading="lazy" />
-      <div class="absolute inset-0 bg-gradient-to-br from-sand-100/95 via-sand-100/85 to-sand-200/90"></div>
+    <section class="relative bg-ink text-paper overflow-hidden py-16 sm:py-20" aria-labelledby="explore-title">
+      <h2 id="explore-title" class="sr-only">Explore as coleções</h2>
+      <!-- Linhas de texto gigante em movimento (decorativas) -->
+      <div class="absolute inset-0 flex flex-col justify-between py-4 pointer-events-none select-none" aria-hidden="true">
+        <div class="flex animate-marquee"><span class="giant pr-10">Explore as coleções · Explore as coleções ·</span><span class="giant pr-10">Explore as coleções · Explore as coleções ·</span></div>
+        <div class="flex animate-marqueeR"><span class="giant pr-10 text-transparent [-webkit-text-stroke:1.5px_#F4F3EF]">Biquínis · Saídas · Bodies · Biquínis · Saídas · Bodies ·</span><span class="giant pr-10 text-transparent [-webkit-text-stroke:1.5px_#F4F3EF]">Biquínis · Saídas · Bodies · Biquínis · Saídas · Bodies ·</span></div>
+        <div class="flex animate-marquee"><span class="giant pr-10">Explore as coleções · Explore as coleções ·</span><span class="giant pr-10">Explore as coleções · Explore as coleções ·</span></div>
+      </div>
 
-      <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="reveal bg-white/80 backdrop-blur-sm border border-sand-200 shadow-[0_30px_80px_-30px_rgba(120,90,40,.35)] grid md:grid-cols-2 overflow-hidden">
+      <div class="relative z-10 max-w-[1100px] mx-auto px-4 sm:px-8">
+        <div class="no-scrollbar flex sm:grid sm:grid-cols-3 gap-5 sm:gap-8 overflow-x-auto snap-x snap-mandatory -mx-4 px-4 sm:mx-0 sm:px-0">
+          <a href="#novidades" class="reveal group relative shrink-0 w-[72%] sm:w-auto snap-center aspect-[4/5] rounded-card-sm overflow-hidden" style="--d:0ms">
+            <img src="assets/img/look-cortininha-color.jpg" alt="Biquínis" class="h-full w-full object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-110" loading="lazy" />
+            <span class="absolute inset-0 bg-ink/25 group-hover:bg-ink/40 transition-colors duration-500"></span>
+            <span class="absolute inset-0 flex items-center justify-center font-script text-6xl sm:text-5xl lg:text-6xl text-white drop-shadow">Biquínis</span>
+          </a>
+          <a href="#novidades" class="reveal group relative shrink-0 w-[72%] sm:w-auto snap-center aspect-[4/5] rounded-card-sm overflow-hidden sm:translate-y-6" style="--d:120ms">
+            <img src="assets/img/saida-tela-preta.jpg" alt="Saídas de praia" class="h-full w-full object-cover object-top transition-transform duration-[1.2s] ease-out group-hover:scale-110" loading="lazy" />
+            <span class="absolute inset-0 bg-ink/25 group-hover:bg-ink/40 transition-colors duration-500"></span>
+            <span class="absolute inset-0 flex items-center justify-center font-script text-6xl sm:text-5xl lg:text-6xl text-white drop-shadow">Saídas</span>
+          </a>
+          <a href="#novidades" class="reveal group relative shrink-0 w-[72%] sm:w-auto snap-center aspect-[4/5] rounded-card-sm overflow-hidden" style="--d:240ms">
+            <img src="assets/img/body-argolas-douradas.jpg" alt="Maiôs e bodies" class="h-full w-full object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-110" loading="lazy" />
+            <span class="absolute inset-0 bg-ink/25 group-hover:bg-ink/40 transition-colors duration-500"></span>
+            <span class="absolute inset-0 flex items-center justify-center font-script text-6xl sm:text-5xl lg:text-6xl text-white drop-shadow">Bodies</span>
+          </a>
+        </div>
+        <div class="mt-12 sm:mt-16 flex justify-center">
+          <a href="#novidades" data-magnetic class="rounded-full bg-paper text-ink px-8 py-3.5 label hover:bg-white">Explorar coleções</a>
+        </div>
+      </div>
+    </section>
 
-          <!-- Imagem do produto -->
-          <div class="relative bg-white flex items-center justify-center p-8 lg:p-12 group overflow-hidden">
-            <span class="absolute top-5 left-5 z-10 bg-ink text-sand-50 text-[10px] uppercase tracking-luxe px-3 py-1.5">Promoção exclusiva</span>
-            <span class="absolute top-5 right-5 z-10 h-16 w-16 rounded-full bg-gold-500 text-white flex flex-col items-center justify-center leading-none shadow-lg">
-              <span class="font-serif text-2xl font-bold">20%</span><span class="text-[9px] tracking-widest">OFF</span>
-            </span>
-            <img src="assets/img/conxa-bronzeador.jpg" alt="Bronzeador de Parafina Conxá em pote âmbar de 100g com tampa dourada" class="w-full max-w-md transition-transform duration-700 ease-out group-hover:scale-105 group-hover:-rotate-2" loading="lazy" />
-          </div>
+    <!-- =========================================================
+         5. DESTAQUE — CONXÁ BRONZEADOR (layout "1:1" do modelo)
+    ========================================================== -->
+    <section id="conxa" class="max-w-[1320px] mx-auto px-4 sm:px-8 py-20 lg:py-28 grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+      <div class="lg:col-span-5 reveal">
+        <div class="relative rounded-card overflow-hidden bg-white aspect-[4/5] flex items-center justify-center group">
+          <span class="absolute top-6 left-6 z-10 rounded-full bg-ink text-paper px-4 py-2 label">Promoção exclusiva</span>
+          <span class="absolute top-5 right-5 z-10 h-[72px] w-[72px] rounded-full border border-ink flex flex-col items-center justify-center leading-none bg-white">
+            <span class="text-2xl font-extrabold">20%</span><span class="label !text-[9px] mt-1">off</span>
+          </span>
+          <img src="assets/img/conxa-bronzeador.jpg" alt="Bronzeador de Parafina Conxá em pote âmbar de 100g com tampa dourada" class="w-[88%] transition-transform duration-700 ease-out group-hover:scale-105 group-hover:-rotate-2" loading="lazy" />
+        </div>
+      </div>
 
-          <!-- Informações -->
-          <div class="p-8 sm:p-12 flex flex-col justify-center">
-            <p class="text-gold-600 uppercase tracking-luxe text-xs font-medium">Conxá Bronzeador</p>
-            <h2 class="font-serif text-4xl lg:text-5xl font-semibold mt-3 leading-tight">Bronzeador de Parafina Conxá</h2>
-            <p class="mt-4 text-ink/70 font-light leading-relaxed">
-              Fórmula hidratante que nutre a pele e intensifica o bronzeado. O acabamento dourado perfeito para acompanhar o seu biquíni favorito.
+      <div class="lg:col-span-7 lg:pt-10 reveal" style="--d:150ms">
+        <p class="label text-ink-500">Conxá Bronzeador</p>
+        <h2 class="mt-4 text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.02]">
+          Bronzeador de <span class="script">Parafina</span><br />Conxá
+        </h2>
+
+        <div class="mt-10 grid sm:grid-cols-2 gap-10 lg:gap-14">
+          <div>
+            <div class="flex flex-wrap items-end gap-x-4 gap-y-1 whitespace-nowrap">
+              <span class="text-lg text-ink-500 line-through">R$ 74,99</span>
+              <span class="text-5xl font-extrabold tracking-tight">R$ 60,00</span>
+            </div>
+            <p class="mt-5 text-sm font-medium leading-relaxed border-l border-ink pl-4">
+              Comprando um biquíni, você ganha <span class="script text-[1.5em]">20% off</span> no bronzeador.
             </p>
-            <ul class="mt-5 flex flex-wrap gap-2 text-[11px] uppercase tracking-widest">
-              <li class="border border-sand-300 px-3 py-1.5">Pote 100g</li>
-              <li class="border border-sand-300 px-3 py-1.5">Hidrata a pele</li>
-              <li class="border border-sand-300 px-3 py-1.5">Bronze perfeito</li>
+            <ul class="mt-6 flex flex-wrap gap-2">
+              <li class="rounded-full border border-ink/25 px-3.5 py-1.5 label !text-[9px]">Pote 100g</li>
+              <li class="rounded-full border border-ink/25 px-3.5 py-1.5 label !text-[9px]">Hidrata a pele</li>
+              <li class="rounded-full border border-ink/25 px-3.5 py-1.5 label !text-[9px]">Bronze perfeito</li>
             </ul>
-
-            <div class="mt-8 flex items-end gap-4">
-              <span class="text-lg text-ink/40 line-through">R$ 74,99</span>
-              <span class="font-serif text-5xl font-bold text-ink">R$ 60,00</span>
-            </div>
-
-            <div class="mt-5 flex items-start gap-3 bg-sand-100 border-l-2 border-gold-500 px-4 py-3">
-              <svg class="h-5 w-5 mt-0.5 shrink-0 text-gold-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M20 12v8H4v-8M2 7h20v5H2zM12 20V7M12 7H8a2 2 0 1 1 0-4c3 0 4 4 4 4Zm0 0h4a2 2 0 1 0 0-4c-3 0-4 4-4 4Z" stroke-linejoin="round"/></svg>
-              <p class="text-sm"><strong class="font-medium">Comprando um biquíni, você ganha 20% OFF no bronzeador.</strong> <span class="text-ink/60">Desconto aplicado automaticamente no combo.</span></p>
-            </div>
-
+          </div>
+          <div class="sm:pt-16">
+            <p class="text-[13px] text-ink-500 leading-relaxed">
+              Fórmula hidratante que nutre a pele e intensifica o bronzeado, com acabamento dourado e natural. O par perfeito para o seu biquíni favorito.
+            </p>
             <button type="button" data-magnetic
-              class="add-to-cart mt-8 inline-flex items-center justify-center gap-3 bg-ink text-sand-50 px-8 py-4 text-xs uppercase tracking-luxe font-medium hover:bg-gold-500 transition-colors duration-300 self-start"
+              class="add-to-cart mt-7 rounded-full bg-ink text-paper px-8 py-3.5 label hover:bg-ink-700"
               data-name="Bronzeador de Parafina Conxá (combo)" data-price="60" data-img="assets/img/conxa-bronzeador.jpg">
               Resgatar combo
-              <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </button>
           </div>
         </div>
@@ -288,84 +296,109 @@
     </section>
 
     <!-- =========================================================
-         7. NOVIDADES — GRID 4 COLUNAS
-         Os cards são gerados via JS a partir do array PRODUCTS
-         (mais fácil de manter e editar preços/descrições).
+         6. NOVIDADES — GRID 4 COLUNAS (cards gerados em JS)
     ========================================================== -->
-    <section id="novidades" class="py-20 lg:py-28 bg-sand-50">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="reveal text-center max-w-2xl mx-auto">
-          <p class="text-gold-600 uppercase tracking-luxe text-xs font-medium">Acabou de chegar</p>
-          <h2 class="font-serif text-4xl sm:text-5xl font-semibold mt-3">Novidades</h2>
-          <p class="mt-4 text-ink/60 font-light">Peças selecionadas para compor looks de praia, piscina e fim de tarde no resort.</p>
+    <section id="novidades" class="max-w-[1320px] mx-auto px-4 sm:px-8 pb-24 lg:pb-32">
+      <div class="reveal flex flex-col sm:flex-row sm:items-end justify-between gap-6 border-t border-ink/10 pt-16">
+        <div>
+          <p class="label text-ink-500">Acabou de chegar</p>
+          <h2 class="mt-3 text-5xl sm:text-6xl font-bold tracking-tight"><span class="script">Novi</span>dades</h2>
         </div>
-
-        <div id="product-grid" class="mt-14 grid grid-cols-2 lg:grid-cols-4 gap-x-4 sm:gap-x-6 gap-y-12">
-          <!-- Cards injetados por JavaScript -->
-        </div>
+        <a href="#" class="label u-link is-static self-start sm:self-auto">Ver todos os produtos</a>
       </div>
+      <div id="product-grid" class="mt-12 grid grid-cols-2 lg:grid-cols-4 gap-x-4 sm:gap-x-6 gap-y-14"></div>
     </section>
 
     <!-- =========================================================
-         8. FAIXA EDITORIAL (lifestyle)
+         7. BENEFÍCIOS (USP) — faixa escura com ícones sólidos
     ========================================================== -->
-    <section class="grid md:grid-cols-2 bg-sand-100">
-      <div class="relative min-h-[420px] overflow-hidden group">
-        <img src="assets/img/flatlay-praia.jpg" alt="Canga, bolsa de tela, óculos escuros e revista sobre a areia" class="absolute inset-0 h-full w-full object-cover transition-transform duration-[1.6s] ease-out group-hover:scale-105" loading="lazy" />
-      </div>
-      <div class="flex items-center px-6 sm:px-12 lg:px-20 py-16">
-        <div class="reveal">
-          <p class="text-gold-600 uppercase tracking-luxe text-xs font-medium">O estilo de vida Angel Z</p>
-          <h2 class="font-serif text-4xl lg:text-5xl font-semibold mt-3 leading-tight">Feito para quem vive o verão com calma e intenção.</h2>
-          <p class="mt-5 text-ink/65 font-light leading-relaxed max-w-md">Da areia ao pôr do sol: biquínis, saídas e acessórios que se combinam entre si, para você montar o look perfeito em segundos.</p>
-          <a href="#novidades" data-magnetic class="mt-8 inline-flex items-center gap-3 border border-ink px-8 py-4 text-xs uppercase tracking-luxe font-medium hover:bg-ink hover:text-sand-50 transition-colors duration-300">Explorar coleção</a>
-        </div>
+    <section class="bg-ink text-paper py-20 lg:py-24" aria-labelledby="usp-title">
+      <div class="max-w-[1320px] mx-auto px-4 sm:px-8">
+        <h2 id="usp-title" class="reveal text-center text-4xl sm:text-5xl font-bold tracking-tight leading-[1.05]">
+          Comprar com a<br /><span class="script">Angel Z</span> é leve
+        </h2>
+        <ul class="mt-16 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-y-14 gap-x-6 text-center">
+          <li class="reveal flex flex-col items-center" style="--d:0ms">
+            <svg class="h-14 w-14" viewBox="0 0 64 64" fill="currentColor" aria-hidden="true"><rect x="6" y="14" width="52" height="36" rx="10"/><rect x="6" y="22" width="52" height="6" fill="#0B0B0B"/><rect x="14" y="38" width="12" height="4" rx="2" fill="#0B0B0B"/></svg>
+            <p class="label mt-6">Até 6x no cartão</p>
+            <p class="mt-2 text-xs text-paper/55 max-w-[180px]">Parcelamento em até 6x sem juros no cartão.</p>
+          </li>
+          <li class="reveal flex flex-col items-center" style="--d:90ms">
+            <svg class="h-14 w-14" viewBox="0 0 64 64" fill="currentColor" aria-hidden="true"><path d="M4 16h34v28H4zM38 24h12l10 10v10H38z"/><circle cx="16" cy="48" r="6" stroke="#0B0B0B" stroke-width="3"/><circle cx="48" cy="48" r="6" stroke="#0B0B0B" stroke-width="3"/></svg>
+            <p class="label mt-6">Entrega rápida</p>
+            <p class="mt-2 text-xs text-paper/55 max-w-[180px]">Entrega rápida para todo o Brasil.</p>
+          </li>
+          <li class="reveal flex flex-col items-center" style="--d:180ms">
+            <svg class="h-14 w-14" viewBox="0 0 64 64" fill="currentColor" aria-hidden="true"><path d="M32 4c4 10 18 14 28 28-10 14-24 18-28 28C28 50 14 46 4 32 14 18 28 14 32 4Z"/></svg>
+            <p class="label mt-6">Desconto no PIX</p>
+            <p class="mt-2 text-xs text-paper/55 max-w-[180px]">Descontos exclusivos no pagamento via PIX.</p>
+          </li>
+          <li class="reveal flex flex-col items-center" style="--d:270ms">
+            <svg class="h-14 w-14" viewBox="0 0 64 64" fill="currentColor" aria-hidden="true"><path d="M32 6c14.4 0 26 10.3 26 23S46.4 52 32 52c-3 0-5.8-.4-8.5-1.2L10 58l3.5-12C9.4 41.8 6 35.8 6 29 6 16.3 17.6 6 32 6Z"/></svg>
+            <p class="label mt-6">Atendimento WhatsApp</p>
+            <p class="mt-2 text-xs text-paper/55 max-w-[180px]">Atendimento personalizado via WhatsApp.</p>
+          </li>
+          <li class="reveal flex flex-col items-center col-span-2 md:col-span-1" style="--d:360ms">
+            <svg class="h-14 w-14" viewBox="0 0 64 64" fill="currentColor" aria-hidden="true"><path d="M32 4 8 13v17c0 14.5 10.2 26.5 24 30 13.8-3.5 24-15.5 24-30V13L32 4Z"/><path d="m22 32 7 7 14-14" fill="none" stroke="#0B0B0B" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <p class="label mt-6">Loja 100% segura</p>
+            <p class="mt-2 text-xs text-paper/55 max-w-[180px]">Loja 100% segura e blindada.</p>
+          </li>
+        </ul>
       </div>
     </section>
   </main>
 
   <!-- =========================================================
-       9. RODAPÉ
+       8. RODAPÉ
   ========================================================== -->
-  <footer class="bg-ink text-sand-200">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
-      <div>
-        <img src="assets/img/logo-angel-z.jpg" alt="Angel Z" class="h-20 w-20 object-cover" loading="lazy" />
-        <p class="mt-5 text-sm font-light leading-relaxed text-sand-200/70 max-w-xs">Moda praia sofisticada com alma de resort. Peace, sun &amp; elegance.</p>
+  <footer class="bg-paper">
+    <div class="max-w-[1320px] mx-auto px-4 sm:px-8 pt-20 pb-10">
+      <div class="grid gap-12 sm:grid-cols-2 lg:grid-cols-12">
+        <div class="lg:col-span-5">
+          <p class="text-3xl sm:text-4xl font-bold tracking-tight leading-[1.05]"><span class="script">Peace,</span> sun<br />&amp; elegance.</p>
+          <form class="mt-8 flex max-w-sm rounded-full border border-ink overflow-hidden" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Inscrita ✓'">
+            <label for="newsletter" class="sr-only">Seu e-mail</label>
+            <input id="newsletter" type="email" required placeholder="Seu e-mail" class="flex-1 min-w-0 bg-transparent px-5 py-3 text-sm focus:outline-none" />
+            <button class="bg-ink text-paper px-5 label">Assinar</button>
+          </form>
+        </div>
+        <div class="lg:col-span-2">
+          <h3 class="label text-ink-500">Institucional</h3>
+          <ul class="mt-5 space-y-3 text-sm">
+            <li><a href="#" class="u-link">Sobre a Angel Z</a></li>
+            <li><a href="#" class="u-link">Trocas e devoluções</a></li>
+            <li><a href="#" class="u-link">Privacidade</a></li>
+            <li><a href="#" class="u-link">Termos de uso</a></li>
+          </ul>
+        </div>
+        <div class="lg:col-span-2">
+          <h3 class="label text-ink-500">Categorias</h3>
+          <ul class="mt-5 space-y-3 text-sm">
+            <li><a href="#novidades" class="u-link">Biquínis</a></li>
+            <li><a href="#novidades" class="u-link">Maiôs &amp; Bodies</a></li>
+            <li><a href="#novidades" class="u-link">Saídas de Praia</a></li>
+            <li><a href="#novidades" class="u-link">Acessórios</a></li>
+          </ul>
+        </div>
+        <div class="lg:col-span-3">
+          <h3 class="label text-ink-500">Atendimento</h3>
+          <ul class="mt-5 space-y-3 text-sm">
+            <li>Seg. a sex., das 9h às 18h</li>
+            <li><a href="#" class="js-whatsapp u-link">WhatsApp</a></li>
+            <li><a href="#" class="u-link">Instagram</a></li>
+            <li class="text-ink-500">Cartão em até 6x · PIX · Boleto</li>
+          </ul>
+        </div>
       </div>
-      <div>
-        <h3 class="text-xs uppercase tracking-luxe text-gold-400 font-medium">Institucional</h3>
-        <ul class="mt-5 space-y-3 text-sm font-light">
-          <li><a href="#" class="nav-link hover:text-white transition-colors">Sobre a Angel Z</a></li>
-          <li><a href="#" class="nav-link hover:text-white transition-colors">Política de privacidade</a></li>
-          <li><a href="#" class="nav-link hover:text-white transition-colors">Trocas e devoluções</a></li>
-          <li><a href="#" class="nav-link hover:text-white transition-colors">Termos de uso</a></li>
-        </ul>
+
+      <!-- Assinatura gigante -->
+      <div class="mt-20 flex items-end justify-between gap-6 border-t border-ink pt-8">
+        <p class="font-extrabold uppercase tracking-tighter leading-[.8] text-[22vw] lg:text-[260px]">Angel&nbsp;Z</p>
+        <img src="assets/img/logo-angel-z.jpg" alt="Monograma Angel Z" class="hidden sm:block h-24 w-24 lg:h-32 lg:w-32 rounded-card-sm object-cover shrink-0" loading="lazy" />
       </div>
-      <div>
-        <h3 class="text-xs uppercase tracking-luxe text-gold-400 font-medium">Categorias</h3>
-        <ul class="mt-5 space-y-3 text-sm font-light">
-          <li><a href="#novidades" class="nav-link hover:text-white transition-colors">Biquínis</a></li>
-          <li><a href="#novidades" class="nav-link hover:text-white transition-colors">Maiôs &amp; Bodies</a></li>
-          <li><a href="#novidades" class="nav-link hover:text-white transition-colors">Saídas de Praia</a></li>
-          <li><a href="#novidades" class="nav-link hover:text-white transition-colors">Acessórios</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3 class="text-xs uppercase tracking-luxe text-gold-400 font-medium">Atendimento</h3>
-        <ul class="mt-5 space-y-3 text-sm font-light">
-          <li>Seg. a sex., das 9h às 18h</li>
-          <li><a href="#" class="js-whatsapp nav-link hover:text-white transition-colors">WhatsApp</a></li>
-          <li><a href="#" class="nav-link hover:text-white transition-colors">Instagram</a></li>
-        </ul>
-        <p class="mt-6 text-[11px] uppercase tracking-widest text-sand-200/50">Pagamento</p>
-        <p class="mt-2 text-sm font-light">Cartão em até 6x · PIX · Boleto</p>
-      </div>
-    </div>
-    <div class="border-t border-white/10">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row gap-2 justify-between text-xs text-sand-200/50">
+      <div class="mt-8 flex flex-col sm:flex-row gap-2 justify-between label !font-normal text-ink-500">
         <p>© <span id="year"></span> Angel Z. Todos os direitos reservados.</p>
-        <p>Moda praia · Feito com carinho no Brasil</p>
+        <p>Moda praia · Feito no Brasil</p>
       </div>
     </div>
   </footer>
@@ -374,7 +407,7 @@
        BOTÃO FLUTUANTE — WHATSAPP
   ========================================================== -->
   <a href="#" target="_blank" rel="noopener" data-magnetic
-     class="js-whatsapp fixed bottom-5 right-5 z-40 flex items-center gap-3 rounded-full bg-[#25D366] text-white pl-4 pr-5 py-3.5 shadow-[0_12px_30px_-8px_rgba(37,211,102,.7)] hover:bg-[#1ebe5b] transition-colors"
+     class="js-whatsapp fixed bottom-5 right-5 z-40 flex items-center gap-3 rounded-full bg-[#25D366] text-white pl-4 pr-5 py-3.5 shadow-[0_12px_30px_-8px_rgba(37,211,102,.7)] hover:bg-[#1ebe5b]"
      aria-label="Compre pelo WhatsApp">
     <span class="absolute inset-0 rounded-full bg-[#25D366] animate-pulseRing -z-10"></span>
     <svg class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
@@ -382,26 +415,26 @@
   </a>
 
   <!-- =========================================================
-       SACOLA (drawer lateral) + TOAST de confirmação
+       SACOLA (drawer) + TOAST
   ========================================================== -->
   <div id="cart-overlay" class="fixed inset-0 z-50 bg-ink/40 opacity-0 pointer-events-none transition-opacity duration-300"></div>
-  <aside id="cart-drawer" class="fixed top-0 right-0 z-50 h-full w-full max-w-sm bg-sand-50 shadow-2xl translate-x-full transition-transform duration-500 ease-[cubic-bezier(.2,.7,.2,1)] flex flex-col" aria-label="Sacola de compras" aria-hidden="true">
-    <div class="flex items-center justify-between px-6 h-20 border-b border-sand-200">
-      <h2 class="font-serif text-2xl">Sua sacola</h2>
-      <button id="cart-close" type="button" class="p-2 -m-2 hover:text-gold-600" aria-label="Fechar sacola">
-        <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" stroke-linecap="round"/></svg>
+  <aside id="cart-drawer" class="fixed top-0 right-0 z-50 h-full w-full max-w-sm bg-paper translate-x-full transition-transform duration-500 ease-[cubic-bezier(.2,.7,.2,1)] flex flex-col sm:rounded-l-card overflow-hidden" aria-label="Sacola de compras" aria-hidden="true">
+    <div class="flex items-center justify-between px-7 h-20 border-b border-ink/10">
+      <h2 class="text-2xl font-bold tracking-tight">Sua <span class="script">sacola</span></h2>
+      <button id="cart-close" type="button" class="h-10 w-10 rounded-full border border-ink/20 flex items-center justify-center hover:bg-ink hover:text-paper transition-colors" aria-label="Fechar sacola">
+        <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" stroke-linecap="round"/></svg>
       </button>
     </div>
-    <ul id="cart-items" class="flex-1 overflow-y-auto px-6 py-4 divide-y divide-sand-200"></ul>
-    <div class="border-t border-sand-200 px-6 py-6">
-      <div class="flex justify-between text-sm"><span>Subtotal</span><span id="cart-total" class="font-medium">R$ 0,00</span></div>
-      <p id="cart-shipping" class="mt-2 text-xs text-ink/60"></p>
-      <a href="#" class="js-whatsapp mt-5 w-full inline-flex items-center justify-center bg-ink text-sand-50 py-4 text-xs uppercase tracking-luxe font-medium hover:bg-gold-500 transition-colors">Finalizar pelo WhatsApp</a>
+    <ul id="cart-items" class="flex-1 overflow-y-auto px-7 py-4 divide-y divide-ink/10"></ul>
+    <div class="border-t border-ink/10 px-7 py-6">
+      <div class="flex justify-between text-sm"><span>Subtotal</span><span id="cart-total" class="font-bold">R$ 0,00</span></div>
+      <p id="cart-shipping" class="mt-2 text-xs text-ink-500"></p>
+      <a href="#" class="js-whatsapp mt-5 w-full inline-flex items-center justify-center rounded-full bg-ink text-paper py-4 label hover:bg-ink-700 transition-colors">Finalizar pelo WhatsApp</a>
     </div>
   </aside>
 
-  <div id="toast" role="status" class="fixed left-1/2 bottom-24 sm:bottom-8 z-[60] -translate-x-1/2 translate-y-6 opacity-0 pointer-events-none bg-ink text-sand-50 px-5 py-3 text-sm shadow-xl flex items-center gap-3 transition-all duration-400">
-    <svg class="h-4 w-4 text-gold-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m5 12 5 5L20 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <div id="toast" role="status" class="fixed left-1/2 bottom-24 sm:bottom-8 z-[60] -translate-x-1/2 translate-y-6 opacity-0 pointer-events-none rounded-full bg-ink text-paper px-6 py-3 text-sm flex items-center gap-3 transition-all duration-500">
+    <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m5 12 5 5L20 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
     <span id="toast-text">Adicionado à sacola</span>
   </div>
 
@@ -423,50 +456,49 @@
       { name: 'Biquíni Faixa Oliva', desc: 'Top faixa e calcinha asa-delta em tecido texturizado verde oliva, toque macio.', price: 239, tag: 'Novo', img: 'assets/img/biquini-verde-oliva.jpg', pos: '50% 40%' },
       { name: 'Conjunto Tricot Cacau', desc: 'Top meia-taça e calça flare em tricot vazado marrom cacau. Do mar ao lounge.', price: 389, tag: 'Conjunto', img: 'assets/img/conjunto-tricot-marrom.jpg', pos: '50% 35%' },
       { name: 'Kit Resort Canga + Bolsa', desc: 'Canga com franjas off-white e bolsa de tela natural para levar o essencial à praia.', price: 189, tag: 'Acessório', img: 'assets/img/flatlay-praia.jpg', pos: '50% 50%' },
-      { name: 'Bronzeador Parafina Conxá', desc: 'Pote 100g com fórmula hidratante que intensifica o bronzeado. Bronze perfeito.', price: 74.99, tag: '20% OFF no combo', img: 'assets/img/conxa-bronzeador.jpg', pos: '50% 50%', contain: true },
+      { name: 'Bronzeador Parafina Conxá', desc: 'Pote 100g com fórmula hidratante que intensifica o bronzeado. Bronze perfeito.', price: 74.99, tag: '20% off no combo', img: 'assets/img/conxa-bronzeador.jpg', pos: '50% 50%', contain: true },
     ];
 
     const brl = (v) => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
     /* ---------- Render dos cards ---------- */
-    const grid = document.getElementById('product-grid');
-    grid.innerHTML = PRODUCTS.map((p, i) => `
+    document.getElementById('product-grid').innerHTML = PRODUCTS.map((p, i) => `
       <article class="reveal group flex flex-col" style="--d:${(i % 4) * 90}ms">
-        <div class="relative aspect-[3/4] overflow-hidden ${p.contain ? 'bg-white' : 'bg-sand-100'}">
-          ${p.tag ? `<span class="absolute top-3 left-3 z-10 bg-sand-50/90 backdrop-blur text-[10px] uppercase tracking-widest px-2.5 py-1">${p.tag}</span>` : ''}
+        <div class="relative aspect-[4/5] rounded-card-sm overflow-hidden ${p.contain ? 'bg-white' : 'bg-paper-200'}">
+          ${p.tag ? `<span class="absolute top-4 left-4 z-10 rounded-full bg-paper/90 backdrop-blur px-3 py-1.5 label !text-[9px]">${p.tag}</span>` : ''}
           <img src="${p.img}" alt="${p.name}" loading="lazy"
                class="h-full w-full ${p.contain ? 'object-contain p-6' : 'object-cover'} transition-transform duration-[1.2s] ease-[cubic-bezier(.2,.7,.2,1)] group-hover:scale-110"
                style="object-position:${p.pos}" />
-          <div class="absolute inset-0 bg-ink/0 group-hover:bg-ink/10 transition-colors duration-500"></div>
           <button type="button" aria-label="Favoritar ${p.name}"
-                  class="fav absolute top-3 right-3 z-10 h-9 w-9 rounded-full bg-sand-50/90 flex items-center justify-center opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity hover:text-gold-600">
+                  class="fav absolute top-3 right-3 z-10 h-9 w-9 rounded-full bg-paper/90 flex items-center justify-center opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity">
             <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z" stroke-linejoin="round"/></svg>
           </button>
+          <!-- Botão rápido que sobe ao passar o mouse (desktop) -->
+          <button type="button" class="add-to-cart hidden lg:block absolute left-4 right-4 bottom-4 rounded-full bg-ink text-paper py-3 label translate-y-[140%] group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(.2,.7,.2,1)]"
+                  data-name="${p.name}" data-price="${p.price}" data-img="${p.img}">Adicionar à Sacola</button>
         </div>
-        <div class="pt-4 flex flex-col flex-1">
-          <h3 class="font-serif text-xl leading-tight">${p.name}</h3>
-          <p class="mt-1.5 text-[13px] text-ink/60 font-light leading-snug line-clamp-2 min-h-[2.5em]">${p.desc}</p>
-          <p class="mt-3 text-lg font-medium">${brl(p.price)}</p>
-          <p class="text-xs text-ink/55">6x de ${brl(p.price / 6)} sem juros</p>
+        <div class="pt-5 flex flex-col flex-1">
+          <h3 class="text-[17px] font-bold tracking-tight leading-tight">${p.name}</h3>
+          <p class="mt-1.5 text-[13px] text-ink-500 leading-snug line-clamp-2 min-h-[2.6em]">${p.desc}</p>
+          <div class="mt-3 flex items-baseline justify-between gap-2 flex-wrap">
+            <p class="text-lg font-extrabold">${brl(p.price)}</p>
+            <p class="text-[11px] text-ink-500">6x de ${brl(p.price / 6)} sem juros</p>
+          </div>
           <button type="button" data-magnetic
-                  class="add-to-cart mt-4 w-full border border-ink py-3 text-[11px] uppercase tracking-[0.22em] font-medium hover:bg-ink hover:text-sand-50 transition-colors duration-300"
-                  data-name="${p.name}" data-price="${p.price}" data-img="${p.img}">
-            Adicionar à Sacola
-          </button>
+                  class="add-to-cart lg:hidden mt-4 w-full rounded-full border border-ink py-3 label hover:bg-ink hover:text-paper"
+                  data-name="${p.name}" data-price="${p.price}" data-img="${p.img}">Adicionar à Sacola</button>
         </div>
       </article>`).join('');
 
     /* ---------- Scroll Reveal (IntersectionObserver) ---------- */
     const io = new IntersectionObserver((entries) => {
-      entries.forEach((e) => {
-        if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); }
-      });
+      entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); } });
     }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
     document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
 
     /* ---------- Micro-interação magnética (apenas mouse) ---------- */
-    const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const finePointer = matchMedia('(hover: hover) and (pointer: fine)').matches;
+    const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (finePointer && !reduceMotion) {
       document.addEventListener('pointermove', (ev) => {
         const el = ev.target.closest('[data-magnetic]');
@@ -475,50 +507,47 @@
         });
         if (!el) return;
         const r = el.getBoundingClientRect();
-        const x = (ev.clientX - (r.left + r.width / 2)) * 0.18;
-        const y = (ev.clientY - (r.top + r.height / 2)) * 0.28;
-        el.style.transform = `translate(${x}px, ${y}px)`;
+        el.style.transform = `translate(${(ev.clientX - (r.left + r.width / 2)) * 0.18}px, ${(ev.clientY - (r.top + r.height / 2)) * 0.28}px)`;
         el.classList.add('is-magnet');
       });
     }
 
     /* ---------- Sombra no header ao rolar ---------- */
     const header = document.getElementById('site-header');
-    window.addEventListener('scroll', () => header.classList.toggle('shadow-md', window.scrollY > 10), { passive: true });
+    addEventListener('scroll', () => header.classList.toggle('shadow-[0_8px_30px_-12px_rgba(0,0,0,.18)]', scrollY > 10), { passive: true });
 
     /* ---------- Sacola de compras ---------- */
     const cart = [];
-    const countEl  = document.getElementById('cart-count');
-    const itemsEl  = document.getElementById('cart-items');
-    const totalEl  = document.getElementById('cart-total');
-    const shipEl   = document.getElementById('cart-shipping');
-    const drawer   = document.getElementById('cart-drawer');
-    const overlay  = document.getElementById('cart-overlay');
-    const toast    = document.getElementById('toast');
+    const countEl = document.getElementById('cart-count');
+    const itemsEl = document.getElementById('cart-items');
+    const totalEl = document.getElementById('cart-total');
+    const shipEl  = document.getElementById('cart-shipping');
+    const drawer  = document.getElementById('cart-drawer');
+    const overlay = document.getElementById('cart-overlay');
+    const toast   = document.getElementById('toast');
     const toastTxt = document.getElementById('toast-text');
     let toastTimer;
 
-    function renderCart() {
+    function renderCart(animate = true) {
       const qty = cart.reduce((s, i) => s + i.qty, 0);
       const total = cart.reduce((s, i) => s + i.qty * i.price, 0);
       countEl.textContent = qty;
-      countEl.classList.remove('animate-bump'); void countEl.offsetWidth; countEl.classList.add('animate-bump');
+      if (animate) { countEl.classList.remove('animate-bump'); void countEl.offsetWidth; countEl.classList.add('animate-bump'); }
 
       itemsEl.innerHTML = cart.length
         ? cart.map((i, idx) => `
           <li class="flex gap-4 py-4">
-            <img src="${i.img}" alt="" class="h-20 w-16 object-cover bg-white" />
+            <img src="${i.img}" alt="" class="h-20 w-16 rounded-xl object-cover bg-white" />
             <div class="flex-1 text-sm">
-              <p class="font-serif text-lg leading-tight">${i.name}</p>
-              <p class="text-ink/60 mt-1">${i.qty} × ${brl(i.price)}</p>
-              <button type="button" data-remove="${idx}" class="mt-1 text-xs underline text-ink/50 hover:text-gold-600">Remover</button>
+              <p class="font-bold leading-tight">${i.name}</p>
+              <p class="text-ink-500 mt-1">${i.qty} × ${brl(i.price)}</p>
+              <button type="button" data-remove="${idx}" class="mt-1 text-xs underline text-ink-500 hover:text-ink">Remover</button>
             </div>
           </li>`).join('')
-        : '<li class="py-10 text-center text-sm text-ink/50">Sua sacola está vazia.</li>';
+        : '<li class="py-10 text-center text-sm text-ink-500">Sua sacola está vazia.</li>';
 
       totalEl.textContent = brl(total);
-      shipEl.textContent = total >= FREE_SHIPPING_MIN
-        ? '✦ Você ganhou frete grátis!'
+      shipEl.textContent = total >= FREE_SHIPPING_MIN ? '✺ Você ganhou frete grátis!'
         : total > 0 ? `Faltam ${brl(FREE_SHIPPING_MIN - total)} para o frete grátis.` : '';
       updateWhatsAppLinks();
     }
@@ -538,15 +567,14 @@
       if (btn) {
         addToCart({ name: btn.dataset.name, price: parseFloat(btn.dataset.price), img: btn.dataset.img });
         const original = btn.innerHTML;
-        btn.innerHTML = 'Adicionado ✓';
-        btn.disabled = true;
+        btn.innerHTML = 'Adicionado ✓'; btn.disabled = true;
         setTimeout(() => { btn.innerHTML = original; btn.disabled = false; }, 1200);
         return;
       }
       const rm = ev.target.closest('[data-remove]');
       if (rm) { cart.splice(+rm.dataset.remove, 1); renderCart(); return; }
       const fav = ev.target.closest('.fav');
-      if (fav) { fav.classList.toggle('text-gold-600'); fav.querySelector('svg').setAttribute('fill', fav.classList.contains('text-gold-600') ? 'currentColor' : 'none'); }
+      if (fav) { const on = fav.classList.toggle('is-fav'); fav.querySelector('svg').setAttribute('fill', on ? 'currentColor' : 'none'); }
     });
 
     function toggleCart(open) {
@@ -564,15 +592,13 @@
     /* ---------- Links de WhatsApp (mensagem inclui itens da sacola) ---------- */
     function updateWhatsAppLinks() {
       let msg = 'Olá, Angel Z! Gostaria de comprar';
-      if (cart.length) msg += ':\n' + cart.map((i) => `• ${i.qty}x ${i.name} (${brl(i.price)})`).join('\n');
-      else msg += '.';
+      msg += cart.length ? ':\n' + cart.map((i) => `• ${i.qty}x ${i.name} (${brl(i.price)})`).join('\n') : '.';
       const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
       document.querySelectorAll('.js-whatsapp').forEach((a) => { a.href = url; a.target = '_blank'; a.rel = 'noopener'; });
     }
 
     document.getElementById('year').textContent = new Date().getFullYear();
-    renderCart();
-    countEl.classList.remove('animate-bump');
+    renderCart(false);
   </script>
 </body>
 </html>
