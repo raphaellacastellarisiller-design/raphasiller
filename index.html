@@ -11,7 +11,7 @@
   <!-- Fontes: Archivo (sans em negrito, estilo editorial) + Pinyon Script (cursiva caligráfica) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700;800&family=Pinyon+Script&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700;800&family=Pinyon+Script&family=Parisienne&display=swap" rel="stylesheet" />
 
   <!-- Tailwind CSS via CDN + configuração da marca (paleta preto & branco) -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -56,8 +56,8 @@
     /* Palavra em cursiva dentro dos títulos em negrito (como no modelo) */
     .script { font-family: "Pinyon Script", cursive; font-weight: 400; font-size: 1.12em; letter-spacing: 0; line-height: .8; text-transform: none; }
 
-    /* Cursiva mais encorpada nos cards da faixa (traço engrossado com contorno) */
-    .card-script { -webkit-text-stroke: 1.4px currentColor; paint-order: stroke fill; text-shadow: 0 2px 18px rgba(0,0,0,.35); }
+    /* Cursiva encorpada (Parisienne) nos nomes dos cards da faixa */
+    .card-script { font-family: "Parisienne", cursive; text-shadow: 0 2px 18px rgba(0,0,0,.35); }
 
     /* Rótulo minúsculo em caixa alta */
     .label { font-size: 10px; letter-spacing: .22em; text-transform: uppercase; font-weight: 600; }
@@ -230,17 +230,17 @@
           <a href="#novidades" class="reveal group relative shrink-0 w-[72%] sm:w-auto snap-center aspect-[4/5] rounded-card-sm overflow-hidden" style="--d:0ms">
             <img src="assets/img/look-cortininha-color.jpg" alt="Biquínis" class="h-full w-full object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-110" loading="lazy" />
             <span class="absolute inset-0 bg-ink/25 group-hover:bg-ink/40 transition-colors duration-500"></span>
-            <span class="absolute inset-0 card-script flex items-center justify-center font-script text-6xl sm:text-5xl lg:text-6xl text-white">Biquínis</span>
+            <span class="absolute inset-0 card-script flex items-center justify-center text-6xl sm:text-5xl lg:text-6xl text-white">Biquínis</span>
           </a>
           <a href="#novidades" class="reveal group relative shrink-0 w-[72%] sm:w-auto snap-center aspect-[4/5] rounded-card-sm overflow-hidden sm:translate-y-6" style="--d:120ms">
             <img src="assets/img/saida-tela-preta.jpg" alt="Saídas de praia" class="h-full w-full object-cover object-top transition-transform duration-[1.2s] ease-out group-hover:scale-110" loading="lazy" />
             <span class="absolute inset-0 bg-ink/25 group-hover:bg-ink/40 transition-colors duration-500"></span>
-            <span class="absolute inset-0 card-script flex items-center justify-center font-script text-6xl sm:text-5xl lg:text-6xl text-white">Saídas</span>
+            <span class="absolute inset-0 card-script flex items-center justify-center text-6xl sm:text-5xl lg:text-6xl text-white">Saídas</span>
           </a>
           <a href="#novidades" class="reveal group relative shrink-0 w-[72%] sm:w-auto snap-center aspect-[4/5] rounded-card-sm overflow-hidden" style="--d:240ms">
             <img src="assets/img/body-argolas-douradas.jpg" alt="Maiôs e bodies" class="h-full w-full object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-110" loading="lazy" />
             <span class="absolute inset-0 bg-ink/25 group-hover:bg-ink/40 transition-colors duration-500"></span>
-            <span class="absolute inset-0 card-script flex items-center justify-center font-script text-6xl sm:text-5xl lg:text-6xl text-white">Bodies</span>
+            <span class="absolute inset-0 card-script flex items-center justify-center text-6xl sm:text-5xl lg:text-6xl text-white">Bodies</span>
           </a>
         </div>
         <div class="mt-12 sm:mt-16 flex justify-center">
